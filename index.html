@@ -7,7 +7,7 @@
   <style>
 /* ============================================
    REGISTRO CIVIL MUNICIPAL DE JIMÉNEZ
-   NUEVA PALETA DE COLORES + CARRUSEL
+   PALETA DE COLORES + CARRUSEL MEJORADO
    ============================================ */
 
 /* ----- Reset y variables ----- */
@@ -308,7 +308,7 @@ ul {
 }
 
 /* ============================================
-   CARRUSEL DE IMÁGENES
+   CARRUSEL DE IMÁGENES MEJORADO
    ============================================ */
 .carousel-container {
   position: relative;
@@ -332,13 +332,44 @@ ul {
   position: relative;
   height: 420px;
   overflow: hidden;
+  cursor: pointer;
 }
 
+/* Las imágenes se adaptan perfectamente */
 .carousel-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s ease;
+}
+
+.carousel-slide:hover img {
+  transform: scale(1.02);
+}
+
+/* Icono de lupa para indicar que se puede ampliar */
+.carousel-slide .zoom-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 5;
+  backdrop-filter: blur(4px);
+}
+
+.carousel-slide:hover .zoom-icon {
+  opacity: 1;
 }
 
 /* Overlay con texto en las imágenes */
@@ -418,6 +449,81 @@ ul {
   background: var(--secondary);
   width: 32px;
   border-radius: 6px;
+}
+
+/* ============================================
+   MODAL PARA VER IMÁGENES EN GRANDE
+   ============================================ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.92);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.modal-content .modal-caption {
+  color: var(--white);
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.modal-close {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-close:hover {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.1);
 }
 
 /* ============================================
@@ -739,6 +845,16 @@ ul {
     height: 36px;
     font-size: 1rem;
   }
+  .modal-close {
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+  }
+  .modal-content img {
+    max-height: 70vh;
+  }
 }
 
 @media (max-width: 480px) {
@@ -803,7 +919,7 @@ ul {
     </section>
 
     <!-- ============================================
-         CARRUSEL DE IMÁGENES
+         CARRUSEL DE IMÁGENES MEJORADO
          ============================================ -->
     <section class="section bg-light">
       <div class="container">
@@ -811,40 +927,45 @@ ul {
         <div class="carousel-container">
           <div class="carousel-track" id="carouselTrack">
             <!-- Slide 1 -->
-            <div class="carousel-slide">
+            <div class="carousel-slide" onclick="openModal(this)">
               <img src="WhatsApp Image 2026-08-28 at 9.36.06 AM.jpeg" alt="Edificio del Registro Civil">
+              <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
               <div class="slide-overlay">
                 <h3>Nuestra Sede</h3>
                 <p>Edificio Marguli, frente al Colegio Virgen del Valle</p>
               </div>
             </div>
             <!-- Slide 2 -->
-            <div class="carousel-slide">
+            <div class="carousel-slide" onclick="openModal(this)">
               <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=500&fit=crop&crop=center" alt="Atención al público">
+              <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
               <div class="slide-overlay">
                 <h3>Atención Personalizada</h3>
                 <p>Comprometidos con la excelencia en el servicio</p>
               </div>
             </div>
             <!-- Slide 3 -->
-            <div class="carousel-slide">
+            <div class="carousel-slide" onclick="openModal(this)">
               <img src="https://images.unsplash.com/photo-1576765608622-067973a79f53?w=1200&h=500&fit=crop&crop=center" alt="Trámites en línea">
+              <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
               <div class="slide-overlay">
                 <h3>Trámites en Línea</h3>
                 <p>Modernización y acceso digital para todos los ciudadanos</p>
               </div>
             </div>
             <!-- Slide 4 -->
-            <div class="carousel-slide">
+            <div class="carousel-slide" onclick="openModal(this)">
               <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=1200&h=500&fit=crop&crop=center" alt="Documentos oficiales">
+              <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
               <div class="slide-overlay">
                 <h3>Documentos Oficiales</h3>
                 <p>Actas de nacimiento, matrimonio, divorcio y más</p>
               </div>
             </div>
             <!-- Slide 5 -->
-            <div class="carousel-slide">
+            <div class="carousel-slide" onclick="openModal(this)">
               <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&h=500&fit=crop&crop=center" alt="Justicia y legalidad">
+              <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
               <div class="slide-overlay">
                 <h3>Justicia y Legalidad</h3>
                 <p>Integridad y transparencia en cada proceso</p>
@@ -983,9 +1104,21 @@ ul {
   </footer>
 
   <!-- ============================================
-       JAVASCRIPT - CONTROL DEL CARRUSEL
+       MODAL PARA VER IMÁGENES EN GRANDE
+       ============================================ -->
+  <div class="modal-overlay" id="imageModal" onclick="closeModal(event)">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal(event)"><i class="fas fa-times"></i></button>
+      <img id="modalImage" src="" alt="Imagen ampliada">
+      <div class="modal-caption" id="modalCaption"></div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       JAVASCRIPT - CONTROL DEL CARRUSEL Y MODAL
        ============================================ -->
   <script>
+    // === CONTROL DEL CARRUSEL ===
     (function() {
       const track = document.getElementById('carouselTrack');
       const slides = track.querySelectorAll('.carousel-slide');
@@ -996,9 +1129,9 @@ ul {
       let currentIndex = 0;
       const totalSlides = slides.length;
       let autoPlayInterval = null;
-      const AUTO_PLAY_DELAY = 5000; // 5 segundos
+      const AUTO_PLAY_DELAY = 5000;
 
-      // Crear indicadores (puntos)
+      // Crear indicadores
       function createIndicators() {
         indicatorsContainer.innerHTML = '';
         for (let i = 0; i < totalSlides; i++) {
@@ -1011,7 +1144,6 @@ ul {
         }
       }
 
-      // Ir a un slide específico
       function goToSlide(index) {
         if (index < 0) index = totalSlides - 1;
         if (index >= totalSlides) index = 0;
@@ -1019,29 +1151,19 @@ ul {
         currentIndex = index;
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
         
-        // Actualizar indicadores
         document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
           dot.classList.toggle('active', i === currentIndex);
         });
       }
 
-      // Siguiente slide
-      function nextSlide() {
-        goToSlide(currentIndex + 1);
-      }
+      function nextSlide() { goToSlide(currentIndex + 1); }
+      function prevSlide() { goToSlide(currentIndex - 1); }
 
-      // Slide anterior
-      function prevSlide() {
-        goToSlide(currentIndex - 1);
-      }
-
-      // Iniciar autoplay
       function startAutoPlay() {
         stopAutoPlay();
         autoPlayInterval = setInterval(nextSlide, AUTO_PLAY_DELAY);
       }
 
-      // Detener autoplay
       function stopAutoPlay() {
         if (autoPlayInterval) {
           clearInterval(autoPlayInterval);
@@ -1049,76 +1171,98 @@ ul {
         }
       }
 
-      // Resetear autoplay (al interactuar manualmente)
       function resetAutoPlay() {
         stopAutoPlay();
         startAutoPlay();
       }
 
-      // Event listeners
-      nextBtn.addEventListener('click', () => {
-        nextSlide();
-        resetAutoPlay();
-      });
+      nextBtn.addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
+      prevBtn.addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
 
-      prevBtn.addEventListener('click', () => {
-        prevSlide();
-        resetAutoPlay();
-      });
-
-      // Pausar autoplay al pasar el mouse
       const carouselContainer = document.querySelector('.carousel-container');
       carouselContainer.addEventListener('mouseenter', stopAutoPlay);
       carouselContainer.addEventListener('mouseleave', startAutoPlay);
 
-      // Teclado: flechas izquierda/derecha
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-          prevSlide();
-          resetAutoPlay();
-        } else if (e.key === 'ArrowRight') {
-          nextSlide();
-          resetAutoPlay();
-        }
+        if (e.key === 'ArrowLeft') { prevSlide(); resetAutoPlay(); }
+        else if (e.key === 'ArrowRight') { nextSlide(); resetAutoPlay(); }
       });
 
-      // Inicializar
       createIndicators();
       startAutoPlay();
 
-      // Para pantallas táctiles: swipe
+      // Swipe táctil
       let touchStartX = 0;
-      let touchEndX = 0;
-      
       carouselContainer.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
         stopAutoPlay();
       }, { passive: true });
       
       carouselContainer.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        const diff = touchStartX - touchEndX;
+        const diff = touchStartX - e.changedTouches[0].screenX;
         if (Math.abs(diff) > 50) {
-          if (diff > 0) {
-            nextSlide();
-          } else {
-            prevSlide();
-          }
+          if (diff > 0) nextSlide();
+          else prevSlide();
           resetAutoPlay();
         } else {
           startAutoPlay();
         }
       }, { passive: true });
 
-      // Exponer funciones para depuración (opcional)
-      window.carousel = {
-        goToSlide,
-        nextSlide,
-        prevSlide,
-        currentIndex: () => currentIndex
-      };
-
+      window.carousel = { goToSlide, nextSlide, prevSlide };
     })();
+
+    // === MODAL PARA VER IMÁGENES EN GRANDE ===
+    function openModal(element) {
+      const img = element.querySelector('img');
+      const overlay = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const caption = document.getElementById('modalCaption');
+      const title = element.querySelector('.slide-overlay h3')?.textContent || '';
+      const desc = element.querySelector('.slide-overlay p')?.textContent || '';
+      
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+      caption.textContent = title + (desc ? ` — ${desc}` : '');
+      
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(event) {
+      if (event) {
+        // Si es clic en el overlay (fondo) o en el botón cerrar
+        if (event.target === event.currentTarget || event.target.closest('.modal-close')) {
+          const overlay = document.getElementById('imageModal');
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      } else {
+        // Cerrar por tecla ESC
+        const overlay = document.getElementById('imageModal');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Cerrar modal con tecla ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // Cerrar modal al hacer clic fuera de la imagen
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal(e);
+      }
+    });
+
+    // También cerrar con el botón X
+    document.querySelector('.modal-close').addEventListener('click', function(e) {
+      closeModal(e);
+    });
   </script>
 </body>
 </html>

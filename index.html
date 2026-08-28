@@ -7,7 +7,7 @@
   <style>
 /* ============================================
    REGISTRO CIVIL MUNICIPAL DE JIMÉNEZ
-   NUEVA PALETA DE COLORES
+   NUEVA PALETA DE COLORES + CARRUSEL
    ============================================ */
 
 /* ----- Reset y variables ----- */
@@ -18,13 +18,13 @@
 }
 
 :root {
-  --primary: #0c1c38;              /* Azul Marino Institucional */
+  --primary: #0c1c38;
   --primary-dark: #09142a;
-  --secondary: #1a5a8c;            /* Azul Cobalto / Cyan Oscuro */
+  --secondary: #1a5a8c;
   --secondary-hover: #0f4a7a;
-  --accent: #f5a623;               /* Amarillo Dorado */
-  --success: #2ecc71;              /* Verde Salud */
-  --gray-bg: #f5f5f0;              /* Blanco Humo / Gris Muy Claro */
+  --accent: #f5a623;
+  --success: #2ecc71;
+  --gray-bg: #f5f5f0;
   --white: #ffffff;
   --text-dark: #1a1a1a;
   --text-muted: #4a4a4a;
@@ -47,7 +47,22 @@ body {
   min-height: 100vh;
 }
 
-/* ----- FONDO DINÁMICO INTERACTIVO ----- */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ----- HERO CON FONDO DINÁMICO ----- */
 .hero {
   position: relative;
   overflow: hidden;
@@ -72,21 +87,12 @@ body {
 }
 
 @keyframes gradientShift {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  33% {
-    transform: translate(10%, -10%) rotate(120deg);
-  }
-  66% {
-    transform: translate(-10%, 10%) rotate(240deg);
-  }
-  100% {
-    transform: translate(0, 0) rotate(360deg);
-  }
+  0% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(10%, -10%) rotate(120deg); }
+  66% { transform: translate(-10%, 10%) rotate(240deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
 }
 
-/* Partículas interactivas (fondo dinámico) */
 .hero::after {
   content: '';
   position: absolute;
@@ -108,15 +114,10 @@ body {
 }
 
 @keyframes sparkle {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 200px 200px;
-  }
+  0% { background-position: 0 0; }
+  100% { background-position: 200px 200px; }
 }
 
-/* Efecto de oleaje en el hero */
 .hero-wave {
   position: absolute;
   bottom: 0;
@@ -157,22 +158,7 @@ body {
   align-items: center;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-ul {
-  list-style: none;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* ----- Botones y CTAs (NUEVOS COLORES) ----- */
+/* ----- BOTONES ----- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -223,7 +209,7 @@ ul {
   box-shadow: 0 8px 16px rgba(46, 204, 113, 0.3);
 }
 
-/* ----- HEADER PÚBLICO ----- */
+/* ----- HEADER ----- */
 .public-header {
   background: var(--primary);
   color: var(--white);
@@ -321,7 +307,122 @@ ul {
   padding-left: 1rem;
 }
 
-/* ----- GRID DE TARJETAS (4) ----- */
+/* ============================================
+   CARRUSEL DE IMÁGENES
+   ============================================ */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  background: var(--white);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay con texto en las imágenes */
+.carousel-slide .slide-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: linear-gradient(transparent, rgba(12, 28, 56, 0.85));
+  color: var(--white);
+}
+
+.carousel-slide .slide-overlay h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.carousel-slide .slide-overlay p {
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
+/* Botones del carrusel */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(12, 28, 56, 0.7);
+  color: var(--white);
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+.carousel-btn:hover {
+  background: var(--secondary);
+  transform: translateY(-50%) scale(1.1);
+}
+.carousel-btn.prev {
+  left: 16px;
+}
+.carousel-btn.next {
+  right: 16px;
+}
+
+/* Indicadores (puntos) */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 0 0.5rem 0;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: #d1d5db;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.carousel-dot:hover {
+  background: var(--secondary);
+  transform: scale(1.2);
+}
+.carousel-dot.active {
+  background: var(--secondary);
+  width: 32px;
+  border-radius: 6px;
+}
+
+/* ============================================
+   TARJETAS Y COMPONENTES
+   ============================================ */
 .card-grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -359,7 +460,7 @@ ul {
   font-size: 0.95rem;
 }
 
-/* ----- PÍLDORAS (requisitos) ----- */
+/* PÍLDORAS */
 .pill-group {
   display: flex;
   flex-wrap: wrap;
@@ -383,7 +484,7 @@ ul {
   color: var(--accent);
 }
 
-/* ----- TARJETAS DE INFORMACIÓN (MISIÓN, VISIÓN) ----- */
+/* INFO CARDS */
 .info-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -452,7 +553,7 @@ ul {
   font-size: 0.8rem;
 }
 
-/* ----- RESEÑA HISTÓRICA ----- */
+/* RESEÑA HISTÓRICA */
 .historia-card {
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: var(--white);
@@ -491,7 +592,7 @@ ul {
   max-width: 80%;
 }
 
-/* ----- UBICACIÓN Y CONTACTO ----- */
+/* UBICACIÓN */
 .contact-wrapper {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -528,7 +629,6 @@ ul {
   font-weight: 600;
 }
 
-/* Límites geográficos */
 .limites-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -548,7 +648,7 @@ ul {
   color: var(--secondary);
 }
 
-/* ----- FOOTER ----- */
+/* FOOTER */
 .public-footer {
   background: var(--primary);
   color: rgba(255,255,255,0.8);
@@ -603,6 +703,9 @@ ul {
   .historia-card p {
     max-width: 100%;
   }
+  .carousel-slide {
+    height: 300px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -619,11 +722,22 @@ ul {
   .hero-text h1 {
     font-size: 2rem;
   }
-  .form-card {
-    padding: 1.5rem;
-  }
   .limites-grid {
     grid-template-columns: 1fr;
+  }
+  .carousel-slide {
+    height: 220px;
+  }
+  .carousel-slide .slide-overlay h3 {
+    font-size: 1.2rem;
+  }
+  .carousel-slide .slide-overlay p {
+    font-size: 0.85rem;
+  }
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
   }
 }
 
@@ -634,6 +748,9 @@ ul {
   .nav-links li a {
     padding: 0.3rem 0.8rem;
     font-size: 0.85rem;
+  }
+  .carousel-slide {
+    height: 180px;
   }
 }
 </style>
@@ -682,6 +799,66 @@ ul {
         <div class="hero-image">
           <i class="fas fa-id-card" style="font-size: 6rem; color: var(--accent); opacity: 0.9;"></i>
         </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         CARRUSEL DE IMÁGENES
+         ============================================ -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2 class="section-title">Galería Institucional</h2>
+        <div class="carousel-container">
+          <div class="carousel-track" id="carouselTrack">
+            <!-- Slide 1 -->
+            <div class="carousel-slide">
+              <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&h=500&fit=crop&crop=center" alt="Edificio del Registro Civil">
+              <div class="slide-overlay">
+                <h3>Nuestra Sede</h3>
+                <p>Edificio Marguli, frente al Colegio Virgen del Valle</p>
+              </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-slide">
+              <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=500&fit=crop&crop=center" alt="Atención al público">
+              <div class="slide-overlay">
+                <h3>Atención Personalizada</h3>
+                <p>Comprometidos con la excelencia en el servicio</p>
+              </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+              <img src="https://images.unsplash.com/photo-1576765608622-067973a79f53?w=1200&h=500&fit=crop&crop=center" alt="Trámites en línea">
+              <div class="slide-overlay">
+                <h3>Trámites en Línea</h3>
+                <p>Modernización y acceso digital para todos los ciudadanos</p>
+              </div>
+            </div>
+            <!-- Slide 4 -->
+            <div class="carousel-slide">
+              <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=1200&h=500&fit=crop&crop=center" alt="Documentos oficiales">
+              <div class="slide-overlay">
+                <h3>Documentos Oficiales</h3>
+                <p>Actas de nacimiento, matrimonio, divorcio y más</p>
+              </div>
+            </div>
+            <!-- Slide 5 -->
+            <div class="carousel-slide">
+              <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&h=500&fit=crop&crop=center" alt="Justicia y legalidad">
+              <div class="slide-overlay">
+                <h3>Justicia y Legalidad</h3>
+                <p>Integridad y transparencia en cada proceso</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botones de navegación -->
+          <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+          <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+
+        <!-- Indicadores (puntos) -->
+        <div class="carousel-indicators" id="indicators"></div>
       </div>
     </section>
 
@@ -804,5 +981,144 @@ ul {
       </div>
     </div>
   </footer>
+
+  <!-- ============================================
+       JAVASCRIPT - CONTROL DEL CARRUSEL
+       ============================================ -->
+  <script>
+    (function() {
+      const track = document.getElementById('carouselTrack');
+      const slides = track.querySelectorAll('.carousel-slide');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const indicatorsContainer = document.getElementById('indicators');
+      
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+      let autoPlayInterval = null;
+      const AUTO_PLAY_DELAY = 5000; // 5 segundos
+
+      // Crear indicadores (puntos)
+      function createIndicators() {
+        indicatorsContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', `Ir a slide ${i + 1}`);
+          dot.dataset.index = i;
+          dot.addEventListener('click', () => goToSlide(i));
+          indicatorsContainer.appendChild(dot);
+        }
+      }
+
+      // Ir a un slide específico
+      function goToSlide(index) {
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        
+        currentIndex = index;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Actualizar indicadores
+        document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentIndex);
+        });
+      }
+
+      // Siguiente slide
+      function nextSlide() {
+        goToSlide(currentIndex + 1);
+      }
+
+      // Slide anterior
+      function prevSlide() {
+        goToSlide(currentIndex - 1);
+      }
+
+      // Iniciar autoplay
+      function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayInterval = setInterval(nextSlide, AUTO_PLAY_DELAY);
+      }
+
+      // Detener autoplay
+      function stopAutoPlay() {
+        if (autoPlayInterval) {
+          clearInterval(autoPlayInterval);
+          autoPlayInterval = null;
+        }
+      }
+
+      // Resetear autoplay (al interactuar manualmente)
+      function resetAutoPlay() {
+        stopAutoPlay();
+        startAutoPlay();
+      }
+
+      // Event listeners
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoPlay();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoPlay();
+      });
+
+      // Pausar autoplay al pasar el mouse
+      const carouselContainer = document.querySelector('.carousel-container');
+      carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+      carouselContainer.addEventListener('mouseleave', startAutoPlay);
+
+      // Teclado: flechas izquierda/derecha
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          prevSlide();
+          resetAutoPlay();
+        } else if (e.key === 'ArrowRight') {
+          nextSlide();
+          resetAutoPlay();
+        }
+      });
+
+      // Inicializar
+      createIndicators();
+      startAutoPlay();
+
+      // Para pantallas táctiles: swipe
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      carouselContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoPlay();
+      }, { passive: true });
+      
+      carouselContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+          resetAutoPlay();
+        } else {
+          startAutoPlay();
+        }
+      }, { passive: true });
+
+      // Exponer funciones para depuración (opcional)
+      window.carousel = {
+        goToSlide,
+        nextSlide,
+        prevSlide,
+        currentIndex: () => currentIndex
+      };
+
+    })();
+  </script>
 </body>
 </html>

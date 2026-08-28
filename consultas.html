@@ -7,7 +7,7 @@
   <style>
 /* ============================================
    REGISTRO CIVIL MUNICIPAL DE JIMÉNEZ
-   Estilos completos - Versión embebida
+   Estilos - Página de Consultas (NUEVA PALETA)
    ============================================ */
 
 /* ----- Reset y variables ----- */
@@ -19,16 +19,18 @@
 
 :root {
   --primary: #0c1c38;
-  --primary-light: #1a2f4f;
-  --accent: #f59e0b;
-  --accent-hover: #d97706;
-  --gray-bg: #f1f5f9;
+  --primary-dark: #09142a;
+  --secondary: #1a5a8c;
+  --secondary-hover: #0f4a7a;
+  --accent: #f5a623;
+  --success: #2ecc71;
+  --gray-bg: #f5f5f0;
   --white: #ffffff;
-  --text-dark: #0f172a;
-  --text-muted: #475569;
+  --text-dark: #1a1a1a;
+  --text-muted: #4a4a4a;
   --border-radius: 12px;
   --shadow: 0 8px 24px rgba(0,0,0,0.08);
-  --transition: 0.25s ease;
+  --transition: 0.3s ease;
 }
 
 html {
@@ -60,7 +62,7 @@ ul {
   padding: 0 1.5rem;
 }
 
-/* ----- Botones y CTAs ----- */
+/* ----- BOTONES (NUEVA PALETA) ----- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -78,15 +80,15 @@ ul {
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: var(--primary);
-  border-color: var(--accent);
+  background: var(--secondary);
+  color: var(--white);
+  border-color: var(--secondary);
 }
 .btn-primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
+  background: var(--secondary-hover);
+  border-color: var(--secondary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 8px 16px rgba(26, 90, 140, 0.3);
 }
 
 .btn-outline {
@@ -99,15 +101,19 @@ ul {
   color: var(--primary);
 }
 
-.btn-secondary {
-  background: var(--primary);
+.btn-success {
+  background: var(--success);
   color: var(--white);
+  border-color: var(--success);
 }
-.btn-secondary:hover {
-  background: var(--primary-light);
+.btn-success:hover {
+  background: #27ae60;
+  border-color: #27ae60;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(46, 204, 113, 0.3);
 }
 
-/* ----- HEADER PÚBLICO ----- */
+/* ----- HEADER ----- */
 .public-header {
   background: var(--primary);
   color: var(--white);
@@ -145,7 +151,7 @@ ul {
 
 /* ----- NAVEGACIÓN ----- */
 .main-nav {
-  background: var(--primary-light);
+  background: var(--primary-dark);
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 
@@ -170,40 +176,8 @@ ul {
 }
 .nav-links li a:hover,
 .nav-links li a.active {
-  background: var(--accent);
-  color: var(--primary);
-}
-
-/* ----- HERO ----- */
-.hero {
-  padding: 3.5rem 0;
+  background: var(--secondary);
   color: var(--white);
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: center;
-}
-
-.hero-text h1 {
-  font-size: 2.6rem;
-  font-weight: 800;
-  letter-spacing: -1px;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-.hero-text p {
-  font-size: 1.15rem;
-  opacity: 0.9;
-  margin-bottom: 1.8rem;
-  max-width: 90%;
-}
-.hero-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* ----- SECCIONES ----- */
@@ -212,6 +186,9 @@ ul {
 }
 .bg-light {
   background: var(--white);
+}
+.bg-gray {
+  background: var(--gray-bg);
 }
 
 .section-title {
@@ -224,92 +201,276 @@ ul {
   padding-left: 1rem;
 }
 
-/* ----- GRID DE TARJETAS (4) ----- */
-.card-grid-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.8rem;
+.section-title-secondary {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+  border-left: 6px solid var(--secondary);
+  padding-left: 1rem;
 }
 
-.card {
+/* ============================================
+   BANNER INFORMATIVO
+   ============================================ */
+.info-banner {
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 2rem 2.5rem;
+  margin-bottom: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.info-banner h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.info-banner h3 i {
+  color: var(--accent);
+}
+.info-banner p {
+  opacity: 0.9;
+}
+.info-banner .banner-icon {
+  font-size: 3.5rem;
+  color: var(--accent);
+  opacity: 0.8;
+}
+
+/* ============================================
+   ESTADOS DE TRÁMITE
+   ============================================ */
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.status-card {
   background: var(--white);
   border-radius: var(--border-radius);
-  padding: 1.8rem 1.5rem;
+  padding: 1.5rem;
+  text-align: center;
   box-shadow: var(--shadow);
   transition: all var(--transition);
-  border: 1px solid #e9edf2;
 }
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 32px rgba(0,0,0,0.10);
+.status-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+.status-card .status-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.status-card .status-icon.amarillo { color: #f5a623; }
+.status-card .status-icon.verde { color: #2ecc71; }
+.status-card .status-icon.rojo { color: #e74c3c; }
+.status-card .status-icon.azul { color: #3498db; }
+.status-card h4 {
+  color: var(--primary);
+  margin-bottom: 0.3rem;
+}
+.status-card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
-.service-card {
+/* ============================================
+   FORMULARIO DE CONSULTA
+   ============================================ */
+.form-card {
+  background: var(--white);
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2.5rem 3rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  border-top: 6px solid var(--secondary);
+}
+
+.form-card h3 {
+  color: var(--primary);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
   text-align: center;
 }
-.service-card i {
-  font-size: 2.8rem;
-  color: var(--accent);
-  margin-bottom: 0.8rem;
-}
-.service-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.4rem;
-  color: var(--primary);
-}
-.service-card p {
+.form-card .form-subtitle {
+  text-align: center;
   color: var(--text-muted);
-  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
 }
 
-/* ----- PÍLDORAS (requisitos) ----- */
-.pill-group {
+.form-group {
+  margin-bottom: 1.2rem;
+}
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--primary);
+}
+.form-group label .required {
+  color: #e74c3c;
+}
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 30px;
+  border: 2px solid #d1d5db;
+  font-family: inherit;
+  transition: border var(--transition);
+  background: var(--gray-bg);
+}
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--secondary);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(26, 90, 140, 0.1);
+}
+.form-group input::placeholder {
+  color: #aaa;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-actions {
   display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
   flex-wrap: wrap;
-  gap: 0.8rem 1.2rem;
+}
+.form-actions .btn {
+  min-width: 160px;
   justify-content: center;
 }
 
-.pill {
-  background: var(--primary);
-  color: var(--white);
-  padding: 0.6rem 1.6rem;
-  border-radius: 50px;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.95rem;
-  box-shadow: 0 2px 6px rgba(12, 28, 56, 0.15);
-}
-.pill i {
-  color: var(--accent);
+/* ============================================
+   RESULTADO DE BÚSQUEDA
+   ============================================ */
+.result-container {
+  display: none;
+  margin-top: 2rem;
+  animation: fadeIn 0.5s ease;
 }
 
-/* ----- UBICACIÓN Y CONTACTO (grid) ----- */
-.contact-wrapper {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2rem;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-box {
   background: var(--white);
   border-radius: var(--border-radius);
-  padding: 1.8rem;
+  padding: 2rem 2.5rem;
   box-shadow: var(--shadow);
+  border-left: 8px solid var(--secondary);
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-.contact-info h3 {
-  color: var(--primary);
-  margin-bottom: 0.8rem;
-}
-.contact-info p {
-  margin: 0.5rem 0;
+.result-box .result-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--gray-bg);
 }
-.contact-info i {
-  color: var(--accent);
-  width: 1.4rem;
+.result-box .result-header h4 {
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+.result-box .result-header .result-badge {
+  padding: 0.3rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.result-badge.en-proceso {
+  background: #fef3c7;
+  color: #d97706;
+}
+.result-badge.aprobado {
+  background: #d1fae5;
+  color: #065f46;
+}
+.result-badge.rechazado {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.result-badge.pendiente {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.result-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+.result-details .detail-item {
+  padding: 0.5rem 0;
+}
+.result-details .detail-item strong {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.result-details .detail-item span {
+  font-size: 1rem;
+  color: var(--text-dark);
+}
+.result-details .detail-item.full-width {
+  grid-column: 1 / -1;
+}
+
+/* ============================================
+   CONTACTO PARA CONSULTAS
+   ============================================ */
+.contact-info-box {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  padding: 1.8rem 2rem;
+  box-shadow: var(--shadow);
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  border-top: 4px solid var(--accent);
+}
+.contact-info-box .contact-item {
+  text-align: center;
+}
+.contact-info-box .contact-item i {
+  font-size: 2rem;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+}
+.contact-info-box .contact-item h4 {
+  color: var(--primary);
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+.contact-info-box .contact-item p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
 /* ----- FOOTER ----- */
@@ -318,7 +479,7 @@ ul {
   color: rgba(255,255,255,0.8);
   padding: 1.2rem 0;
   margin-top: auto;
-  border-top: 2px solid var(--accent);
+  border-top: 3px solid var(--secondary);
 }
 
 .footer-flex {
@@ -342,304 +503,21 @@ ul {
 }
 
 /* ============================================
-   PÁGINAS DE TRÁMITES / REQUISITOS / CITAS / CONSULTAS
+   RESPONSIVE
    ============================================ */
-
-/* Grid de tarjetas de trámites (reutiliza card-grid-4 pero con más detalle) */
-.tramite-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.8rem;
-}
-.tramite-card {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
-  border-left: 6px solid var(--accent);
-}
-.tramite-card h3 {
-  color: var(--primary);
-  margin-bottom: 0.4rem;
-}
-.tramite-card p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
-/* Requisitos: listas estructuradas */
-.requisitos-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.8rem;
-}
-.requisitos-list .card {
-  border-left: 6px solid var(--accent);
-  padding: 1.5rem;
-}
-.requisitos-list .card h4 {
-  color: var(--primary);
-  margin-bottom: 0.8rem;
-}
-.requisitos-list .card ul {
-  list-style: disc;
-  padding-left: 1.4rem;
-  color: var(--text-muted);
-}
-.requisitos-list .card ul li {
-  margin-bottom: 0.3rem;
-}
-
-/* Formularios estáticos */
-.form-card {
-  background: var(--white);
-  max-width: 620px;
-  margin: 0 auto;
-  padding: 2rem 2.5rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-}
-.form-group {
-  margin-bottom: 1.2rem;
-}
-.form-group label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-  color: var(--primary);
-}
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 0.7rem 1rem;
-  border-radius: 30px;
-  border: 2px solid #d1d5db;
-  font-family: inherit;
-  transition: border var(--transition);
-  background: var(--gray-bg);
-}
-.form-group input:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: var(--accent);
-  background: var(--white);
-}
-.form-actions {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 1.2rem;
-}
-
-/* Resultado simulado (consultas) */
-.result-box {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  padding: 1.5rem 2rem;
-  margin-top: 2rem;
-  box-shadow: var(--shadow);
-  border-left: 8px solid var(--accent);
-}
-.result-box .estado {
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-.estado-verde {
-  color: #16a34a;
-}
-.estado-amarillo {
-  color: #ca8a04;
-}
-
-/* ============================================
-   LOGIN (sin header/footer público)
-   ============================================ */
-.login-page {
-  background: var(--gray-bg);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-}
-
-.login-card {
-  background: var(--white);
-  max-width: 420px;
-  width: 100%;
-  padding: 2.5rem 2rem;
-  border-radius: var(--border-radius);
-  box-shadow: 0 24px 48px rgba(0,0,0,0.15);
-  text-align: center;
-}
-.login-card .logo-icon {
-  font-size: 3rem;
-  color: var(--accent);
-}
-.login-card h2 {
-  color: var(--primary);
-  margin: 0.5rem 0 1.2rem;
-}
-.login-card .form-group {
-  text-align: left;
-}
-.login-card .btn-primary {
-  width: 100%;
-  justify-content: center;
-  padding: 0.8rem;
-}
-
-/* ============================================
-   DASHBOARD (sidebar + contenido)
-   ============================================ */
-.dashboard-body {
-  background: var(--gray-bg);
-  display: flex;
-  min-height: 100vh;
-  font-family: 'Inter', sans-serif;
-}
-
-.dashboard-sidebar {
-  width: 260px;
-  background: var(--primary);
-  color: var(--white);
-  padding: 2rem 1.2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  flex-shrink: 0;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-}
-.dashboard-sidebar .logo {
-  margin-bottom: 1.2rem;
-}
-.dashboard-sidebar .logo-text {
-  font-size: 1rem;
-}
-.sidebar-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-.sidebar-menu a {
-  padding: 0.7rem 1rem;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: rgba(255,255,255,0.7);
-  transition: all var(--transition);
-  font-weight: 500;
-}
-.sidebar-menu a:hover,
-.sidebar-menu a.active {
-  background: var(--accent);
-  color: var(--primary);
-}
-.sidebar-menu a i {
-  width: 1.6rem;
-  text-align: center;
-}
-.sidebar-footer {
-  margin-top: auto;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 1.5rem;
-}
-.sidebar-footer a {
-  color: rgba(255,255,255,0.6);
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-.sidebar-footer a:hover {
-  color: var(--accent);
-}
-
-.dashboard-main {
-  flex: 1;
-  padding: 2rem 2.5rem;
-}
-
-.dash-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-.stat-card {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  padding: 1.2rem 1.8rem;
-  box-shadow: var(--shadow);
-  border-left: 6px solid var(--accent);
-}
-.stat-card .stat-number {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--primary);
-}
-.stat-card .stat-label {
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.dash-table {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  padding: 1.2rem 1.5rem;
-  box-shadow: var(--shadow);
-  overflow-x: auto;
-}
-.dash-table table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-.dash-table th {
-  background: var(--primary);
-  color: var(--white);
-  padding: 0.8rem 1rem;
-  text-align: left;
-}
-.dash-table td {
-  padding: 0.7rem 1rem;
-  border-bottom: 1px solid #e9edf2;
-}
-.dash-table .badge {
-  background: var(--accent);
-  color: var(--primary);
-  padding: 0.2rem 0.8rem;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 0.8rem;
-}
-.dash-table .badge-secondary {
-  background: #d1d5db;
-  color: #1f2937;
-}
-
-/* ----- RESPONSIVE ----- */
 @media (max-width: 992px) {
-  .hero-grid {
+  .status-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contact-info-box {
+    grid-template-columns: 1fr 1fr;
+  }
+  .info-banner {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  .hero-text p {
-    max-width: 100%;
-  }
-  .card-grid-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .contact-wrapper {
-    grid-template-columns: 1fr;
-  }
-  .dashboard-sidebar {
-    width: 220px;
-    padding: 1.2rem;
-  }
-  .dashboard-main {
-    padding: 1.5rem;
+  .info-banner .banner-icon {
+    display: none;
   }
 }
 
@@ -651,54 +529,52 @@ ul {
   .nav-links {
     justify-content: center;
   }
-  .card-grid-4 {
-    grid-template-columns: 1fr 1fr;
-  }
-  .hero-text h1 {
-    font-size: 2rem;
+  .status-grid {
+    grid-template-columns: 1fr;
   }
   .form-card {
     padding: 1.5rem;
   }
-  .dashboard-body {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .result-details {
+    grid-template-columns: 1fr;
+  }
+  .contact-info-box {
+    grid-template-columns: 1fr;
+  }
+  .form-actions {
     flex-direction: column;
+    align-items: stretch;
   }
-  .dashboard-sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 1rem;
-    gap: 0.5rem;
+  .form-actions .btn {
+    min-width: auto;
   }
-  .dashboard-sidebar .logo {
-    margin-bottom: 0;
+  .section-title,
+  .section-title-secondary {
+    font-size: 1.5rem;
   }
-  .sidebar-menu {
-    flex-direction: row;
-    flex-wrap: wrap;
+  .result-box {
+    padding: 1.5rem;
   }
-  .sidebar-footer {
-    margin-top: 0;
-    border-top: none;
-    padding-top: 0;
-  }
-  .dash-stats {
-    grid-template-columns: 1fr 1fr;
+  .result-box .result-header {
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-start;
   }
 }
 
 @media (max-width: 480px) {
-  .card-grid-4 {
-    grid-template-columns: 1fr;
-  }
-  .dash-stats {
-    grid-template-columns: 1fr;
-  }
   .nav-links li a {
     padding: 0.3rem 0.8rem;
     font-size: 0.85rem;
+  }
+  .info-banner {
+    padding: 1.5rem;
+  }
+  .info-banner h3 {
+    font-size: 1.2rem;
   }
 }
 </style>
@@ -732,31 +608,138 @@ ul {
   </header>
 
   <main>
-    <section class="section">
+    <!-- ============================================
+         BANNER INFORMATIVO
+         ============================================ -->
+    <section class="section bg-light">
       <div class="container">
-        <h2 class="section-title">Consultar estado de trámite</h2>
+        <div class="info-banner">
+          <div>
+            <h3><i class="fas fa-search"></i> Consulta el estado de tu trámite</h3>
+            <p>Ingresa tu número de solicitud y cédula para conocer el estado actual de tu trámite. Te mantenemos informado en cada paso del proceso.</p>
+          </div>
+          <div class="banner-icon">
+            <i class="fas fa-file-signature"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         ESTADOS DE TRÁMITE
+         ============================================ -->
+    <section class="section bg-gray">
+      <div class="container">
+        <h2 class="section-title-secondary">Estados de trámite</h2>
+        <div class="status-grid">
+          <div class="status-card">
+            <div class="status-icon amarillo"><i class="fas fa-clock"></i></div>
+            <h4>En proceso</h4>
+            <p>Tu solicitud está siendo revisada por nuestro equipo.</p>
+          </div>
+          <div class="status-card">
+            <div class="status-icon azul"><i class="fas fa-hourglass-half"></i></div>
+            <h4>Pendiente</h4>
+            <p>Requiere documentación adicional o está en espera.</p>
+          </div>
+          <div class="status-card">
+            <div class="status-icon verde"><i class="fas fa-check-circle"></i></div>
+            <h4>Aprobado</h4>
+            <p>Tu trámite ha sido completado exitosamente.</p>
+          </div>
+          <div class="status-card">
+            <div class="status-icon rojo"><i class="fas fa-times-circle"></i></div>
+            <h4>Rechazado</h4>
+            <p>No cumple con los requisitos establecidos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         FORMULARIO DE CONSULTA
+         ============================================ -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2 class="section-title">Consultar estado</h2>
         <div class="form-card">
-          <form>
-            <div class="form-group">
-              <label for="solicitud">Número de solicitud</label>
-              <input type="text" id="solicitud" placeholder="Ej: SOL-2026-001">
-            </div>
-            <div class="form-group">
-              <label for="cedula-consulta">Cédula</label>
-              <input type="text" id="cedula-consulta" placeholder="V-12345678">
+          <h3><i class="fas fa-search" style="color: var(--secondary);"></i> Buscar trámite</h3>
+          <p class="form-subtitle">Ingresa los datos solicitados para conocer el estado de tu trámite</p>
+          <form id="consultaForm" onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="solicitud">Número de solicitud <span class="required">*</span></label>
+                <input type="text" id="solicitud" placeholder="Ej: SOL-2026-001" required>
+              </div>
+              <div class="form-group">
+                <label for="cedula-consulta">Cédula de identidad <span class="required">*</span></label>
+                <input type="text" id="cedula-consulta" placeholder="V-12345678" required>
+              </div>
             </div>
             <div class="form-actions">
-              <button type="button" class="btn btn-primary"><i class="fas fa-search"></i> Consultar</button>
+              <button type="button" class="btn btn-primary" onclick="consultarEstado()">
+                <i class="fas fa-search"></i> Consultar
+              </button>
+              <button type="reset" class="btn btn-secondary" style="background: #e74c3c; color: white; border-color: #e74c3c;" onclick="ocultarResultado()">
+                <i class="fas fa-undo"></i> Limpiar
+              </button>
             </div>
           </form>
         </div>
 
-        <!-- Resultado simulado -->
-        <div class="result-box">
-          <p><strong>Número de solicitud:</strong> SOL-2026-001</p>
-          <p><strong>Ciudadano:</strong> María Pérez</p>
-          <p><strong>Trámite:</strong> Acta de Nacimiento</p>
-          <p class="estado estado-amarillo"><i class="fas fa-clock"></i> Estado: En proceso</p>
+        <!-- ============================================
+             RESULTADO DE BÚSQUEDA (Dinámico)
+             ============================================ -->
+        <div class="result-container" id="resultContainer">
+          <div class="result-box" id="resultBox">
+            <div class="result-header">
+              <h4><i class="fas fa-file-alt" style="color: var(--secondary);"></i> Detalle del trámite</h4>
+              <span class="result-badge" id="resultBadge">En proceso</span>
+            </div>
+            <div class="result-details">
+              <div class="detail-item">
+                <strong>Número de solicitud</strong>
+                <span id="resultSolicitud">SOL-2026-001</span>
+              </div>
+              <div class="detail-item">
+                <strong>Ciudadano</strong>
+                <span id="resultCiudadano">María Pérez</span>
+              </div>
+              <div class="detail-item">
+                <strong>Tipo de trámite</strong>
+                <span id="resultTramite">Acta de Nacimiento</span>
+              </div>
+              <div class="detail-item">
+                <strong>Fecha de solicitud</strong>
+                <span id="resultFecha">27/08/2026</span>
+              </div>
+              <div class="detail-item full-width">
+                <strong>Observaciones</strong>
+                <span id="resultObservaciones">Documentación en revisión por el departamento legal.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================
+             CONTACTO PARA CONSULTAS
+             ============================================ -->
+        <div class="contact-info-box">
+          <div class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <h4>Teléfono</h4>
+            <p>(0251) 123-4567</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <h4>Correo electrónico</h4>
+            <p>consultas@jimenez.gob.ve</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <h4>Horario de atención</h4>
+            <p>Lun a Vie 8:00 am - 4:00 pm</p>
+          </div>
         </div>
       </div>
     </section>
@@ -772,5 +755,139 @@ ul {
       </div>
     </div>
   </footer>
+
+  <!-- ============================================
+       JAVASCRIPT - CONSULTA DINÁMICA
+       ============================================ -->
+  <script>
+    // Base de datos simulada de trámites
+    const tramitesDB = [
+      {
+        solicitud: 'SOL-2026-001',
+        cedula: 'V-12345678',
+        ciudadano: 'María Pérez',
+        tramite: 'Acta de Nacimiento',
+        fecha: '27/08/2026',
+        estado: 'en-proceso',
+        observaciones: 'Documentación en revisión por el departamento legal.'
+      },
+      {
+        solicitud: 'SOL-2026-002',
+        cedula: 'V-87654321',
+        ciudadano: 'Juan Rodríguez',
+        tramite: 'Acta de Matrimonio',
+        fecha: '26/08/2026',
+        estado: 'aprobado',
+        observaciones: 'Trámite completado exitosamente. Acta disponible para retiro.'
+      },
+      {
+        solicitud: 'SOL-2026-003',
+        cedula: 'V-11122333',
+        ciudadano: 'Ana Gómez',
+        tramite: 'Acta de Defunción',
+        fecha: '25/08/2026',
+        estado: 'pendiente',
+        observaciones: 'Se requiere presentar certificado médico original.'
+      },
+      {
+        solicitud: 'SOL-2026-004',
+        cedula: 'V-44455666',
+        ciudadano: 'Carlos Herrera',
+        tramite: 'Unión Estable de Hecho',
+        fecha: '24/08/2026',
+        estado: 'rechazado',
+        observaciones: 'No cumple con los requisitos de convivencia mínima.'
+      },
+      {
+        solicitud: 'SOL-2026-005',
+        cedula: 'V-77788999',
+        ciudadano: 'Laura Fernández',
+        tramite: 'Rectificación de Acta',
+        fecha: '23/08/2026',
+        estado: 'en-proceso',
+        observaciones: 'En espera de documentación adicional solicitada.'
+      }
+    ];
+
+    // Mapeo de estados a clases CSS y etiquetas
+    const estadoMap = {
+      'en-proceso': { clase: 'en-proceso', etiqueta: 'En proceso', icono: 'fa-clock' },
+      'aprobado': { clase: 'aprobado', etiqueta: 'Aprobado', icono: 'fa-check-circle' },
+      'rechazado': { clase: 'rechazado', etiqueta: 'Rechazado', icono: 'fa-times-circle' },
+      'pendiente': { clase: 'pendiente', etiqueta: 'Pendiente', icono: 'fa-hourglass-half' }
+    };
+
+    function consultarEstado() {
+      const solicitud = document.getElementById('solicitud').value.trim();
+      const cedula = document.getElementById('cedula-consulta').value.trim();
+      const resultContainer = document.getElementById('resultContainer');
+      const resultBox = document.getElementById('resultBox');
+
+      // Validar campos
+      if (!solicitud || !cedula) {
+        alert('⚠️ Por favor, ingresa el número de solicitud y la cédula de identidad.');
+        return;
+      }
+
+      // Validar formato de cédula
+      const cedulaRegex = /^[VvEe]\s*-\s*\d{6,8}$/;
+      if (!cedulaRegex.test(cedula)) {
+        alert('⚠️ Por favor, ingresa una cédula válida (Ej: V-12345678).');
+        return;
+      }
+
+      // Buscar en la base de datos simulada
+      const resultado = tramitesDB.find(
+        t => t.solicitud.toUpperCase() === solicitud.toUpperCase() && 
+             t.cedula.toUpperCase() === cedula.toUpperCase()
+      );
+
+      if (!resultado) {
+        alert('❌ No se encontró ningún trámite con los datos proporcionados. Verifica la información e intenta nuevamente.');
+        // Mostrar resultado de "no encontrado" (opcional)
+        return;
+      }
+
+      // Actualizar el resultado con los datos encontrados
+      const estadoInfo = estadoMap[resultado.estado] || estadoMap['en-proceso'];
+      
+      document.getElementById('resultSolicitud').textContent = resultado.solicitud;
+      document.getElementById('resultCiudadano').textContent = resultado.ciudadano;
+      document.getElementById('resultTramite').textContent = resultado.tramite;
+      document.getElementById('resultFecha').textContent = resultado.fecha;
+      document.getElementById('resultObservaciones').textContent = resultado.observaciones;
+
+      const badge = document.getElementById('resultBadge');
+      badge.textContent = estadoInfo.etiqueta;
+      badge.className = 'result-badge ' + estadoInfo.clase;
+
+      // Mostrar el resultado con animación
+      resultContainer.style.display = 'block';
+      resultBox.style.animation = 'none';
+      setTimeout(() => {
+        resultBox.style.animation = 'fadeIn 0.5s ease';
+      }, 10);
+
+      // Scroll suave al resultado
+      resultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function ocultarResultado() {
+      document.getElementById('resultContainer').style.display = 'none';
+      document.getElementById('solicitud').value = '';
+      document.getElementById('cedula-consulta').value = '';
+    }
+
+    // Permitir consulta con Enter
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        const form = document.getElementById('consultaForm');
+        if (form.contains(e.target)) {
+          e.preventDefault();
+          consultarEstado();
+        }
+      }
+    });
+  </script>
 </body>
 </html>

@@ -7,7 +7,7 @@
   <style>
 /* ============================================
    REGISTRO CIVIL MUNICIPAL DE JIMÉNEZ
-   Estilos completos - Versión embebida
+   Estilos - Página de Citas (NUEVA PALETA)
    ============================================ */
 
 /* ----- Reset y variables ----- */
@@ -19,16 +19,18 @@
 
 :root {
   --primary: #0c1c38;
-  --primary-light: #1a2f4f;
-  --accent: #f59e0b;
-  --accent-hover: #d97706;
-  --gray-bg: #f1f5f9;
+  --primary-dark: #09142a;
+  --secondary: #1a5a8c;
+  --secondary-hover: #0f4a7a;
+  --accent: #f5a623;
+  --success: #2ecc71;
+  --gray-bg: #f5f5f0;
   --white: #ffffff;
-  --text-dark: #0f172a;
-  --text-muted: #475569;
+  --text-dark: #1a1a1a;
+  --text-muted: #4a4a4a;
   --border-radius: 12px;
   --shadow: 0 8px 24px rgba(0,0,0,0.08);
-  --transition: 0.25s ease;
+  --transition: 0.3s ease;
 }
 
 html {
@@ -60,7 +62,7 @@ ul {
   padding: 0 1.5rem;
 }
 
-/* ----- Botones y CTAs ----- */
+/* ----- BOTONES (NUEVA PALETA) ----- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -78,15 +80,15 @@ ul {
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: var(--primary);
-  border-color: var(--accent);
+  background: var(--secondary);
+  color: var(--white);
+  border-color: var(--secondary);
 }
 .btn-primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
+  background: var(--secondary-hover);
+  border-color: var(--secondary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 8px 16px rgba(26, 90, 140, 0.3);
 }
 
 .btn-outline {
@@ -99,15 +101,19 @@ ul {
   color: var(--primary);
 }
 
-.btn-secondary {
-  background: var(--primary);
+.btn-success {
+  background: var(--success);
   color: var(--white);
+  border-color: var(--success);
 }
-.btn-secondary:hover {
-  background: var(--primary-light);
+.btn-success:hover {
+  background: #27ae60;
+  border-color: #27ae60;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(46, 204, 113, 0.3);
 }
 
-/* ----- HEADER PÚBLICO ----- */
+/* ----- HEADER ----- */
 .public-header {
   background: var(--primary);
   color: var(--white);
@@ -145,7 +151,7 @@ ul {
 
 /* ----- NAVEGACIÓN ----- */
 .main-nav {
-  background: var(--primary-light);
+  background: var(--primary-dark);
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 
@@ -170,40 +176,8 @@ ul {
 }
 .nav-links li a:hover,
 .nav-links li a.active {
-  background: var(--accent);
-  color: var(--primary);
-}
-
-/* ----- HERO ----- */
-.hero {
-  padding: 3.5rem 0;
+  background: var(--secondary);
   color: var(--white);
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: center;
-}
-
-.hero-text h1 {
-  font-size: 2.6rem;
-  font-weight: 800;
-  letter-spacing: -1px;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-.hero-text p {
-  font-size: 1.15rem;
-  opacity: 0.9;
-  margin-bottom: 1.8rem;
-  max-width: 90%;
-}
-.hero-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* ----- SECCIONES ----- */
@@ -212,6 +186,9 @@ ul {
 }
 .bg-light {
   background: var(--white);
+}
+.bg-gray {
+  background: var(--gray-bg);
 }
 
 .section-title {
@@ -224,92 +201,204 @@ ul {
   padding-left: 1rem;
 }
 
-/* ----- GRID DE TARJETAS (4) ----- */
-.card-grid-4 {
+.section-title-secondary {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+  border-left: 6px solid var(--secondary);
+  padding-left: 1rem;
+}
+
+/* ============================================
+   BANNER INFORMATIVO
+   ============================================ */
+.info-banner {
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 2rem 2.5rem;
+  margin-bottom: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.info-banner h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.info-banner h3 i {
+  color: var(--accent);
+}
+.info-banner p {
+  opacity: 0.9;
+}
+.info-banner .banner-icon {
+  font-size: 3.5rem;
+  color: var(--accent);
+  opacity: 0.8;
+}
+
+/* ----- PASOS PARA AGENDAR CITA ----- */
+.steps-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.8rem;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
-.card {
+.step-card {
   background: var(--white);
   border-radius: var(--border-radius);
-  padding: 1.8rem 1.5rem;
-  box-shadow: var(--shadow);
-  transition: all var(--transition);
-  border: 1px solid #e9edf2;
-}
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 32px rgba(0,0,0,0.10);
-}
-
-.service-card {
+  padding: 1.5rem;
   text-align: center;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--secondary);
+  transition: all var(--transition);
 }
-.service-card i {
-  font-size: 2.8rem;
-  color: var(--accent);
-  margin-bottom: 0.8rem;
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
 }
-.service-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.4rem;
+.step-card .step-number {
+  background: var(--secondary);
+  color: var(--white);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.8rem auto;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.step-card h4 {
   color: var(--primary);
+  margin-bottom: 0.3rem;
 }
-.service-card p {
+.step-card p {
   color: var(--text-muted);
   font-size: 0.95rem;
 }
 
-/* ----- PÍLDORAS (requisitos) ----- */
-.pill-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem 1.2rem;
-  justify-content: center;
-}
-
-.pill {
-  background: var(--primary);
-  color: var(--white);
-  padding: 0.6rem 1.6rem;
-  border-radius: 50px;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.95rem;
-  box-shadow: 0 2px 6px rgba(12, 28, 56, 0.15);
-}
-.pill i {
-  color: var(--accent);
-}
-
-/* ----- UBICACIÓN Y CONTACTO (grid) ----- */
-.contact-wrapper {
+/* ----- HORARIOS Y REQUISITOS ----- */
+.info-grid-2 {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.info-box {
   background: var(--white);
   border-radius: var(--border-radius);
   padding: 1.8rem;
   box-shadow: var(--shadow);
+  border-left: 6px solid var(--accent);
 }
-
-.contact-info h3 {
+.info-box h3 {
   color: var(--primary);
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 }
-.contact-info p {
-  margin: 0.5rem 0;
+.info-box h3 i {
+  color: var(--secondary);
+}
+.info-box ul li {
+  padding: 0.4rem 0;
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  color: var(--text-muted);
 }
-.contact-info i {
+.info-box ul li i {
+  color: var(--success);
+  width: 1.2rem;
+}
+
+.info-box.horarios ul li i {
   color: var(--accent);
-  width: 1.4rem;
+}
+
+/* ----- FORMULARIO ----- */
+.form-card {
+  background: var(--white);
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2.5rem 3rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  border-top: 6px solid var(--secondary);
+}
+
+.form-card h3 {
+  color: var(--primary);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+.form-card .form-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--primary);
+}
+.form-group label .required {
+  color: #e74c3c;
+}
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 30px;
+  border: 2px solid #d1d5db;
+  font-family: inherit;
+  transition: border var(--transition);
+  background: var(--gray-bg);
+}
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--secondary);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(26, 90, 140, 0.1);
+}
+.form-group input::placeholder {
+  color: #aaa;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+.form-actions .btn {
+  min-width: 160px;
+  justify-content: center;
 }
 
 /* ----- FOOTER ----- */
@@ -318,7 +407,7 @@ ul {
   color: rgba(255,255,255,0.8);
   padding: 1.2rem 0;
   margin-top: auto;
-  border-top: 2px solid var(--accent);
+  border-top: 3px solid var(--secondary);
 }
 
 .footer-flex {
@@ -342,304 +431,21 @@ ul {
 }
 
 /* ============================================
-   PÁGINAS DE TRÁMITES / REQUISITOS / CITAS / CONSULTAS
+   RESPONSIVE
    ============================================ */
-
-/* Grid de tarjetas de trámites (reutiliza card-grid-4 pero con más detalle) */
-.tramite-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.8rem;
-}
-.tramite-card {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
-  border-left: 6px solid var(--accent);
-}
-.tramite-card h3 {
-  color: var(--primary);
-  margin-bottom: 0.4rem;
-}
-.tramite-card p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
-/* Requisitos: listas estructuradas */
-.requisitos-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.8rem;
-}
-.requisitos-list .card {
-  border-left: 6px solid var(--accent);
-  padding: 1.5rem;
-}
-.requisitos-list .card h4 {
-  color: var(--primary);
-  margin-bottom: 0.8rem;
-}
-.requisitos-list .card ul {
-  list-style: disc;
-  padding-left: 1.4rem;
-  color: var(--text-muted);
-}
-.requisitos-list .card ul li {
-  margin-bottom: 0.3rem;
-}
-
-/* Formularios estáticos */
-.form-card {
-  background: var(--white);
-  max-width: 620px;
-  margin: 0 auto;
-  padding: 2rem 2.5rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-}
-.form-group {
-  margin-bottom: 1.2rem;
-}
-.form-group label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-  color: var(--primary);
-}
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 0.7rem 1rem;
-  border-radius: 30px;
-  border: 2px solid #d1d5db;
-  font-family: inherit;
-  transition: border var(--transition);
-  background: var(--gray-bg);
-}
-.form-group input:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: var(--accent);
-  background: var(--white);
-}
-.form-actions {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 1.2rem;
-}
-
-/* Resultado simulado (consultas) */
-.result-box {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  padding: 1.5rem 2rem;
-  margin-top: 2rem;
-  box-shadow: var(--shadow);
-  border-left: 8px solid var(--accent);
-}
-.result-box .estado {
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-.estado-verde {
-  color: #16a34a;
-}
-.estado-amarillo {
-  color: #ca8a04;
-}
-
-/* ============================================
-   LOGIN (sin header/footer público)
-   ============================================ */
-.login-page {
-  background: var(--gray-bg);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-}
-
-.login-card {
-  background: var(--white);
-  max-width: 420px;
-  width: 100%;
-  padding: 2.5rem 2rem;
-  border-radius: var(--border-radius);
-  box-shadow: 0 24px 48px rgba(0,0,0,0.15);
-  text-align: center;
-}
-.login-card .logo-icon {
-  font-size: 3rem;
-  color: var(--accent);
-}
-.login-card h2 {
-  color: var(--primary);
-  margin: 0.5rem 0 1.2rem;
-}
-.login-card .form-group {
-  text-align: left;
-}
-.login-card .btn-primary {
-  width: 100%;
-  justify-content: center;
-  padding: 0.8rem;
-}
-
-/* ============================================
-   DASHBOARD (sidebar + contenido)
-   ============================================ */
-.dashboard-body {
-  background: var(--gray-bg);
-  display: flex;
-  min-height: 100vh;
-  font-family: 'Inter', sans-serif;
-}
-
-.dashboard-sidebar {
-  width: 260px;
-  background: var(--primary);
-  color: var(--white);
-  padding: 2rem 1.2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  flex-shrink: 0;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-}
-.dashboard-sidebar .logo {
-  margin-bottom: 1.2rem;
-}
-.dashboard-sidebar .logo-text {
-  font-size: 1rem;
-}
-.sidebar-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-.sidebar-menu a {
-  padding: 0.7rem 1rem;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: rgba(255,255,255,0.7);
-  transition: all var(--transition);
-  font-weight: 500;
-}
-.sidebar-menu a:hover,
-.sidebar-menu a.active {
-  background: var(--accent);
-  color: var(--primary);
-}
-.sidebar-menu a i {
-  width: 1.6rem;
-  text-align: center;
-}
-.sidebar-footer {
-  margin-top: auto;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 1.5rem;
-}
-.sidebar-footer a {
-  color: rgba(255,255,255,0.6);
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-.sidebar-footer a:hover {
-  color: var(--accent);
-}
-
-.dashboard-main {
-  flex: 1;
-  padding: 2rem 2.5rem;
-}
-
-.dash-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-.stat-card {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  padding: 1.2rem 1.8rem;
-  box-shadow: var(--shadow);
-  border-left: 6px solid var(--accent);
-}
-.stat-card .stat-number {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--primary);
-}
-.stat-card .stat-label {
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.dash-table {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  padding: 1.2rem 1.5rem;
-  box-shadow: var(--shadow);
-  overflow-x: auto;
-}
-.dash-table table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-.dash-table th {
-  background: var(--primary);
-  color: var(--white);
-  padding: 0.8rem 1rem;
-  text-align: left;
-}
-.dash-table td {
-  padding: 0.7rem 1rem;
-  border-bottom: 1px solid #e9edf2;
-}
-.dash-table .badge {
-  background: var(--accent);
-  color: var(--primary);
-  padding: 0.2rem 0.8rem;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 0.8rem;
-}
-.dash-table .badge-secondary {
-  background: #d1d5db;
-  color: #1f2937;
-}
-
-/* ----- RESPONSIVE ----- */
 @media (max-width: 992px) {
-  .hero-grid {
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .info-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .info-banner {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  .hero-text p {
-    max-width: 100%;
-  }
-  .card-grid-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .contact-wrapper {
-    grid-template-columns: 1fr;
-  }
-  .dashboard-sidebar {
-    width: 220px;
-    padding: 1.2rem;
-  }
-  .dashboard-main {
-    padding: 1.5rem;
+  .info-banner .banner-icon {
+    display: none;
   }
 }
 
@@ -651,54 +457,38 @@ ul {
   .nav-links {
     justify-content: center;
   }
-  .card-grid-4 {
-    grid-template-columns: 1fr 1fr;
-  }
-  .hero-text h1 {
-    font-size: 2rem;
+  .steps-grid {
+    grid-template-columns: 1fr;
   }
   .form-card {
     padding: 1.5rem;
   }
-  .dashboard-body {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .form-actions {
     flex-direction: column;
+    align-items: stretch;
   }
-  .dashboard-sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 1rem;
-    gap: 0.5rem;
+  .form-actions .btn {
+    min-width: auto;
   }
-  .dashboard-sidebar .logo {
-    margin-bottom: 0;
-  }
-  .sidebar-menu {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  .sidebar-footer {
-    margin-top: 0;
-    border-top: none;
-    padding-top: 0;
-  }
-  .dash-stats {
-    grid-template-columns: 1fr 1fr;
+  .section-title,
+  .section-title-secondary {
+    font-size: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .card-grid-4 {
-    grid-template-columns: 1fr;
-  }
-  .dash-stats {
-    grid-template-columns: 1fr;
-  }
   .nav-links li a {
     padding: 0.3rem 0.8rem;
     font-size: 0.85rem;
+  }
+  .info-banner {
+    padding: 1.5rem;
+  }
+  .info-banner h3 {
+    font-size: 1.2rem;
   }
 }
 </style>
@@ -732,43 +522,166 @@ ul {
   </header>
 
   <main>
-    <section class="section">
+    <!-- ============================================
+         BANNER INFORMATIVO
+         ============================================ -->
+    <section class="section bg-light">
       <div class="container">
-        <h2 class="section-title">Solicitar cita</h2>
+        <div class="info-banner">
+          <div>
+            <h3><i class="fas fa-calendar-check"></i> Agenda tu cita de forma rápida</h3>
+            <p>Completa el formulario y recibe confirmación vía correo electrónico. Nuestro equipo te atenderá en la fecha y hora seleccionada.</p>
+          </div>
+          <div class="banner-icon">
+            <i class="fas fa-calendar-plus"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         PASOS PARA AGENDAR
+         ============================================ -->
+    <section class="section bg-gray">
+      <div class="container">
+        <h2 class="section-title-secondary">¿Cómo agendar tu cita?</h2>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h4>Selecciona el trámite</h4>
+            <p>Elige el tipo de trámite que deseas realizar entre las opciones disponibles.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h4>Completa tus datos</h4>
+            <p>Ingresa tu información personal de manera clara y correcta.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h4>Elige fecha y hora</h4>
+            <p>Selecciona el día y la hora que mejor se adapte a tu disponibilidad.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <h4>Recibe confirmación</h4>
+            <p>Recibirás un correo con los detalles de tu cita y requisitos a presentar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         HORARIOS Y REQUISITOS PARA CITA
+         ============================================ -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2 class="section-title">Información importante</h2>
+        <div class="info-grid-2">
+          <div class="info-box horarios">
+            <h3><i class="fas fa-clock"></i> Horarios de atención</h3>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> <strong>Lunes a Viernes:</strong> 8:00 am – 4:00 pm</li>
+              <li><i class="fas fa-check-circle"></i> <strong>Horario continuo:</strong> Sin interrupción al medio día</li>
+              <li><i class="fas fa-check-circle"></i> <strong>Duración de la cita:</strong> 30 minutos aproximadamente</li>
+              <li><i class="fas fa-check-circle"></i> <strong>Llegar con:</strong> 15 minutos de anticipación</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h3><i class="fas fa-file-alt"></i> Requisitos para la cita</h3>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Cédula de identidad vigente</li>
+              <li><i class="fas fa-check-circle"></i> Copia del recibo de servicio público (último mes)</li>
+              <li><i class="fas fa-check-circle"></i> Si es por un tercero, carta de autorización</li>
+              <li><i class="fas fa-check-circle"></i> Documentos específicos según el trámite</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         FORMULARIO DE CITAS
+         ============================================ -->
+    <section class="section bg-gray">
+      <div class="container">
+        <h2 class="section-title-secondary">Formulario de solicitud</h2>
         <div class="form-card">
-          <form>
-            <div class="form-group">
-              <label for="nombre">Nombre completo</label>
-              <input type="text" id="nombre" placeholder="Ej: María Pérez">
+          <h3><i class="fas fa-calendar-plus" style="color: var(--secondary);"></i> Solicitar cita</h3>
+          <p class="form-subtitle">Todos los campos con <span style="color: #e74c3c;">*</span> son obligatorios</p>
+          <form id="citaForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre completo <span class="required">*</span></label>
+                <input type="text" id="nombre" placeholder="Ej: María Pérez Gómez" required>
+              </div>
+              <div class="form-group">
+                <label for="cedula">Cédula de identidad <span class="required">*</span></label>
+                <input type="text" id="cedula" placeholder="V-12345678" required>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="cedula">Cédula</label>
-              <input type="text" id="cedula" placeholder="V-12345678">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="correo">Correo electrónico <span class="required">*</span></label>
+                <input type="email" id="correo" placeholder="maria@ejemplo.com" required>
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono / Celular <span class="required">*</span></label>
+                <input type="tel" id="telefono" placeholder="0412-1234567" required>
+              </div>
             </div>
+
             <div class="form-group">
-              <label for="correo">Correo electrónico</label>
-              <input type="email" id="correo" placeholder="maria@ejemplo.com">
-            </div>
-            <div class="form-group">
-              <label for="telefono">Teléfono</label>
-              <input type="tel" id="telefono" placeholder="0412-1234567">
-            </div>
-            <div class="form-group">
-              <label for="tramite">Tipo de trámite</label>
-              <select id="tramite">
-                <option value="">Selecciona...</option>
+              <label for="tramite">Tipo de trámite <span class="required">*</span></label>
+              <select id="tramite" required>
+                <option value="">Selecciona el trámite...</option>
                 <option value="nacimiento">Acta de Nacimiento</option>
-                <option value="matrimonio">Matrimonio</option>
-                <option value="defuncion">Defunción</option>
+                <option value="matrimonio">Acta de Matrimonio</option>
+                <option value="divorcio">Acta de Divorcio</option>
+                <option value="defuncion">Acta de Defunción</option>
                 <option value="union">Unión Estable de Hecho</option>
+                <option value="rectificacion">Rectificación de Acta</option>
               </select>
             </div>
-            <div class="form-group">
-              <label for="fecha">Fecha</label>
-              <input type="date" id="fecha">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fecha">Fecha de la cita <span class="required">*</span></label>
+                <input type="date" id="fecha" required>
+              </div>
+              <div class="form-group">
+                <label for="hora">Hora preferida</label>
+                <select id="hora">
+                  <option value="">Selecciona una hora...</option>
+                  <option value="08:00">08:00 am</option>
+                  <option value="08:30">08:30 am</option>
+                  <option value="09:00">09:00 am</option>
+                  <option value="09:30">09:30 am</option>
+                  <option value="10:00">10:00 am</option>
+                  <option value="10:30">10:30 am</option>
+                  <option value="11:00">11:00 am</option>
+                  <option value="11:30">11:30 am</option>
+                  <option value="12:00">12:00 pm</option>
+                  <option value="02:00">02:00 pm</option>
+                  <option value="02:30">02:30 pm</option>
+                  <option value="03:00">03:00 pm</option>
+                  <option value="03:30">03:30 pm</option>
+                </select>
+              </div>
             </div>
+
+            <div class="form-group">
+              <label for="observaciones">Observaciones adicionales</label>
+              <input type="text" id="observaciones" placeholder="Ej: Necesito atención especial, etc.">
+            </div>
+
             <div class="form-actions">
-              <button type="button" class="btn btn-primary"><i class="fas fa-calendar-plus"></i> Agendar</button>
+              <button type="button" class="btn btn-primary" onclick="agendarCita()">
+                <i class="fas fa-calendar-plus"></i> Agendar cita
+              </button>
+              <button type="reset" class="btn btn-secondary" style="background: #e74c3c; color: white; border-color: #e74c3c;">
+                <i class="fas fa-undo"></i> Limpiar
+              </button>
             </div>
           </form>
         </div>
@@ -786,5 +699,105 @@ ul {
       </div>
     </div>
   </footer>
+
+  <!-- ============================================
+       JAVASCRIPT - VALIDACIÓN DEL FORMULARIO
+       ============================================ -->
+  <script>
+    function agendarCita() {
+      // Obtener valores del formulario
+      const nombre = document.getElementById('nombre').value.trim();
+      const cedula = document.getElementById('cedula').value.trim();
+      const correo = document.getElementById('correo').value.trim();
+      const telefono = document.getElementById('telefono').value.trim();
+      const tramite = document.getElementById('tramite').value;
+      const fecha = document.getElementById('fecha').value;
+      const hora = document.getElementById('hora').value;
+      const observaciones = document.getElementById('observaciones').value.trim();
+
+      // Validar campos obligatorios
+      if (!nombre || !cedula || !correo || !telefono || !tramite || !fecha) {
+        alert('⚠️ Por favor, completa todos los campos obligatorios (marcados con *).');
+        return;
+      }
+
+      // Validar formato de correo
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(correo)) {
+        alert('⚠️ Por favor, ingresa un correo electrónico válido.');
+        return;
+      }
+
+      // Validar formato de cédula (V-12345678)
+      const cedulaRegex = /^[VvEe]\s*-\s*\d{6,8}$/;
+      if (!cedulaRegex.test(cedula)) {
+        alert('⚠️ Por favor, ingresa una cédula válida (Ej: V-12345678).');
+        return;
+      }
+
+      // Validar que la fecha no sea en el pasado
+      const fechaSeleccionada = new Date(fecha);
+      const fechaActual = new Date();
+      fechaActual.setHours(0, 0, 0, 0);
+      if (fechaSeleccionada < fechaActual) {
+        alert('⚠️ La fecha seleccionada no puede ser en el pasado.');
+        return;
+      }
+
+      // Validar que la fecha no sea fin de semana
+      const diaSemana = fechaSeleccionada.getDay();
+      if (diaSemana === 0 || diaSemana === 6) {
+        alert('⚠️ Las citas solo se agendan de lunes a viernes. Por favor, selecciona otro día.');
+        return;
+      }
+
+      // Construir mensaje de confirmación
+      const nombreTramite = document.getElementById('tramite').options[document.getElementById('tramite').selectedIndex].text;
+      const horaTexto = hora ? ` a las ${hora}` : ' (horario a confirmar)';
+      const fechaFormateada = fechaSeleccionada.toLocaleDateString('es-ES', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      const mensaje = `✅ ¡Cita agendada exitosamente!\n\n` +
+        `📋 Trámite: ${nombreTramite}\n` +
+        `👤 Nombre: ${nombre}\n` +
+        `📅 Fecha: ${fechaFormateada}${horaTexto}\n` +
+        `📧 Correo: ${correo}\n` +
+        `📱 Teléfono: ${telefono}\n` +
+        `${observaciones ? `📝 Observaciones: ${observaciones}\n` : ''}\n` +
+        `📨 Recibirás un correo de confirmación con los detalles.`;
+
+      alert(mensaje);
+
+      // Aquí normalmente se enviaría a un servidor
+      // Por ahora solo mostramos el mensaje
+      console.log('Datos de la cita:', {
+        nombre,
+        cedula,
+        correo,
+        telefono,
+        tramite,
+        fecha,
+        hora,
+        observaciones
+      });
+
+      // Resetear el formulario después de enviar
+      document.getElementById('citaForm').reset();
+    }
+
+    // Establecer la fecha mínima como hoy
+    document.addEventListener('DOMContentLoaded', function() {
+      const fechaInput = document.getElementById('fecha');
+      const hoy = new Date().toISOString().split('T')[0];
+      fechaInput.setAttribute('min', hoy);
+      
+      // Establecer la fecha actual como valor predeterminado
+      fechaInput.value = hoy;
+    });
+  </script>
 </body>
 </html>

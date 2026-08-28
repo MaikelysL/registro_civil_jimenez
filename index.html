@@ -7,7 +7,7 @@
   <style>
 /* ============================================
    REGISTRO CIVIL MUNICIPAL DE JIMÉNEZ
-   Estilos completos - Versión embebida
+   NUEVA PALETA DE COLORES
    ============================================ */
 
 /* ----- Reset y variables ----- */
@@ -18,17 +18,19 @@
 }
 
 :root {
-  --primary: #0c1c38;
-  --primary-light: #1a2f4f;
-  --accent: #f59e0b;
-  --accent-hover: #d97706;
-  --gray-bg: #f1f5f9;
+  --primary: #0c1c38;              /* Azul Marino Institucional */
+  --primary-dark: #09142a;
+  --secondary: #1a5a8c;            /* Azul Cobalto / Cyan Oscuro */
+  --secondary-hover: #0f4a7a;
+  --accent: #f5a623;               /* Amarillo Dorado */
+  --success: #2ecc71;              /* Verde Salud */
+  --gray-bg: #f5f5f0;              /* Blanco Humo / Gris Muy Claro */
   --white: #ffffff;
-  --text-dark: #0f172a;
-  --text-muted: #475569;
+  --text-dark: #1a1a1a;
+  --text-muted: #4a4a4a;
   --border-radius: 12px;
   --shadow: 0 8px 24px rgba(0,0,0,0.08);
-  --transition: 0.25s ease;
+  --transition: 0.3s ease;
 }
 
 html {
@@ -43,6 +45,116 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+/* ----- FONDO DINÁMICO INTERACTIVO ----- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0;
+  background: var(--primary);
+  color: var(--white);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(26, 90, 140, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(245, 166, 35, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(46, 204, 113, 0.1) 0%, transparent 40%);
+  animation: gradientShift 15s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+@keyframes gradientShift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(10%, -10%) rotate(120deg);
+  }
+  66% {
+    transform: translate(-10%, 10%) rotate(240deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
+/* Partículas interactivas (fondo dinámico) */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.2), transparent),
+    radial-gradient(2px 2px at 50px 160px, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 90px 40px, rgba(255,255,255,0.2), transparent),
+    radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.2), transparent);
+  background-size: 200px 200px;
+  animation: sparkle 10s linear infinite;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+@keyframes sparkle {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200px 200px;
+  }
+}
+
+/* Efecto de oleaje en el hero */
+.hero-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: var(--gray-bg);
+  clip-path: ellipse(70% 100% at 50% 100%);
+  opacity: 0.1;
+  z-index: 2;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-text h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.hero-text p {
+  font-size: 1.15rem;
+  opacity: 0.9;
+  margin-bottom: 1.8rem;
+  max-width: 90%;
+}
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 a {
@@ -60,7 +172,7 @@ ul {
   padding: 0 1.5rem;
 }
 
-/* ----- Botones y CTAs ----- */
+/* ----- Botones y CTAs (NUEVOS COLORES) ----- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -78,15 +190,15 @@ ul {
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: var(--primary);
-  border-color: var(--accent);
+  background: var(--secondary);
+  color: var(--white);
+  border-color: var(--secondary);
 }
 .btn-primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
+  background: var(--secondary-hover);
+  border-color: var(--secondary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 8px 16px rgba(26, 90, 140, 0.3);
 }
 
 .btn-outline {
@@ -99,12 +211,16 @@ ul {
   color: var(--primary);
 }
 
-.btn-secondary {
-  background: var(--primary);
+.btn-success {
+  background: var(--success);
   color: var(--white);
+  border-color: var(--success);
 }
-.btn-secondary:hover {
-  background: var(--primary-light);
+.btn-success:hover {
+  background: #27ae60;
+  border-color: #27ae60;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(46, 204, 113, 0.3);
 }
 
 /* ----- HEADER PÚBLICO ----- */
@@ -145,7 +261,7 @@ ul {
 
 /* ----- NAVEGACIÓN ----- */
 .main-nav {
-  background: var(--primary-light);
+  background: var(--primary-dark);
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 
@@ -170,40 +286,8 @@ ul {
 }
 .nav-links li a:hover,
 .nav-links li a.active {
-  background: var(--accent);
-  color: var(--primary);
-}
-
-/* ----- HERO ----- */
-.hero {
-  padding: 3.5rem 0;
+  background: var(--secondary);
   color: var(--white);
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: center;
-}
-
-.hero-text h1 {
-  font-size: 2.6rem;
-  font-weight: 800;
-  letter-spacing: -1px;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-.hero-text p {
-  font-size: 1.15rem;
-  opacity: 0.9;
-  margin-bottom: 1.8rem;
-  max-width: 90%;
-}
-.hero-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* ----- SECCIONES ----- */
@@ -213,6 +297,9 @@ ul {
 .bg-light {
   background: var(--white);
 }
+.bg-gray {
+  background: var(--gray-bg);
+}
 
 .section-title {
   font-size: 2rem;
@@ -221,6 +308,16 @@ ul {
   color: var(--primary);
   letter-spacing: -0.5px;
   border-left: 6px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.section-title-secondary {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+  border-left: 6px solid var(--secondary);
   padding-left: 1rem;
 }
 
@@ -249,7 +346,7 @@ ul {
 }
 .service-card i {
   font-size: 2.8rem;
-  color: var(--accent);
+  color: var(--secondary);
   margin-bottom: 0.8rem;
 }
 .service-card h3 {
@@ -286,15 +383,129 @@ ul {
   color: var(--accent);
 }
 
-/* ----- UBICACIÓN Y CONTACTO (grid) ----- */
+/* ----- TARJETAS DE INFORMACIÓN (MISIÓN, VISIÓN) ----- */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.info-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  border-top: 6px solid var(--secondary);
+  transition: all var(--transition);
+}
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+.info-card h3 {
+  color: var(--primary);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.info-card h3 i {
+  color: var(--accent);
+}
+.info-card p {
+  color: var(--text-muted);
+}
+
+.info-card-principles {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  border-top: 6px solid var(--accent);
+}
+.info-card-principles h3 {
+  color: var(--primary);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.info-card-principles h3 i {
+  color: var(--accent);
+}
+.info-card-principles ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1.5rem;
+}
+.info-card-principles ul li {
+  padding: 0.3rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+}
+.info-card-principles ul li i {
+  color: var(--success);
+  font-size: 0.8rem;
+}
+
+/* ----- RESEÑA HISTÓRICA ----- */
+.historia-card {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.historia-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: rgba(245, 166, 35, 0.05);
+  border-radius: 50%;
+}
+.historia-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+.historia-card h3 i {
+  color: var(--accent);
+}
+.historia-card p {
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+  max-width: 80%;
+}
+
+/* ----- UBICACIÓN Y CONTACTO ----- */
 .contact-wrapper {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1.5fr 1fr;
   gap: 2rem;
   background: var(--white);
   border-radius: var(--border-radius);
   padding: 1.8rem;
   box-shadow: var(--shadow);
+}
+
+.contact-map iframe {
+  border-radius: 12px;
+  width: 100%;
+  height: 300px;
 }
 
 .contact-info h3 {
@@ -306,10 +517,35 @@ ul {
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  color: var(--text-muted);
 }
 .contact-info i {
-  color: var(--accent);
+  color: var(--secondary);
   width: 1.4rem;
+}
+.contact-info .highlight {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Límites geográficos */
+.limites-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+.limite-item {
+  background: var(--gray-bg);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+.limite-item i {
+  color: var(--secondary);
 }
 
 /* ----- FOOTER ----- */
@@ -318,7 +554,7 @@ ul {
   color: rgba(255,255,255,0.8);
   padding: 1.2rem 0;
   margin-top: auto;
-  border-top: 2px solid var(--accent);
+  border-top: 3px solid var(--secondary);
 }
 
 .footer-flex {
@@ -342,284 +578,8 @@ ul {
 }
 
 /* ============================================
-   PÁGINAS DE TRÁMITES / REQUISITOS / CITAS / CONSULTAS
+   RESPONSIVE
    ============================================ */
-
-/* Grid de tarjetas de trámites (reutiliza card-grid-4 pero con más detalle) */
-.tramite-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.8rem;
-}
-.tramite-card {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
-  border-left: 6px solid var(--accent);
-}
-.tramite-card h3 {
-  color: var(--primary);
-  margin-bottom: 0.4rem;
-}
-.tramite-card p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
-/* Requisitos: listas estructuradas */
-.requisitos-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.8rem;
-}
-.requisitos-list .card {
-  border-left: 6px solid var(--accent);
-  padding: 1.5rem;
-}
-.requisitos-list .card h4 {
-  color: var(--primary);
-  margin-bottom: 0.8rem;
-}
-.requisitos-list .card ul {
-  list-style: disc;
-  padding-left: 1.4rem;
-  color: var(--text-muted);
-}
-.requisitos-list .card ul li {
-  margin-bottom: 0.3rem;
-}
-
-/* Formularios estáticos */
-.form-card {
-  background: var(--white);
-  max-width: 620px;
-  margin: 0 auto;
-  padding: 2rem 2.5rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-}
-.form-group {
-  margin-bottom: 1.2rem;
-}
-.form-group label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-  color: var(--primary);
-}
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 0.7rem 1rem;
-  border-radius: 30px;
-  border: 2px solid #d1d5db;
-  font-family: inherit;
-  transition: border var(--transition);
-  background: var(--gray-bg);
-}
-.form-group input:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: var(--accent);
-  background: var(--white);
-}
-.form-actions {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 1.2rem;
-}
-
-/* Resultado simulado (consultas) */
-.result-box {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  padding: 1.5rem 2rem;
-  margin-top: 2rem;
-  box-shadow: var(--shadow);
-  border-left: 8px solid var(--accent);
-}
-.result-box .estado {
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-.estado-verde {
-  color: #16a34a;
-}
-.estado-amarillo {
-  color: #ca8a04;
-}
-
-/* ============================================
-   LOGIN (sin header/footer público)
-   ============================================ */
-.login-page {
-  background: var(--gray-bg);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-}
-
-.login-card {
-  background: var(--white);
-  max-width: 420px;
-  width: 100%;
-  padding: 2.5rem 2rem;
-  border-radius: var(--border-radius);
-  box-shadow: 0 24px 48px rgba(0,0,0,0.15);
-  text-align: center;
-}
-.login-card .logo-icon {
-  font-size: 3rem;
-  color: var(--accent);
-}
-.login-card h2 {
-  color: var(--primary);
-  margin: 0.5rem 0 1.2rem;
-}
-.login-card .form-group {
-  text-align: left;
-}
-.login-card .btn-primary {
-  width: 100%;
-  justify-content: center;
-  padding: 0.8rem;
-}
-
-/* ============================================
-   DASHBOARD (sidebar + contenido)
-   ============================================ */
-.dashboard-body {
-  background: var(--gray-bg);
-  display: flex;
-  min-height: 100vh;
-  font-family: 'Inter', sans-serif;
-}
-
-.dashboard-sidebar {
-  width: 260px;
-  background: var(--primary);
-  color: var(--white);
-  padding: 2rem 1.2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  flex-shrink: 0;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-}
-.dashboard-sidebar .logo {
-  margin-bottom: 1.2rem;
-}
-.dashboard-sidebar .logo-text {
-  font-size: 1rem;
-}
-.sidebar-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-.sidebar-menu a {
-  padding: 0.7rem 1rem;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: rgba(255,255,255,0.7);
-  transition: all var(--transition);
-  font-weight: 500;
-}
-.sidebar-menu a:hover,
-.sidebar-menu a.active {
-  background: var(--accent);
-  color: var(--primary);
-}
-.sidebar-menu a i {
-  width: 1.6rem;
-  text-align: center;
-}
-.sidebar-footer {
-  margin-top: auto;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 1.5rem;
-}
-.sidebar-footer a {
-  color: rgba(255,255,255,0.6);
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-.sidebar-footer a:hover {
-  color: var(--accent);
-}
-
-.dashboard-main {
-  flex: 1;
-  padding: 2rem 2.5rem;
-}
-
-.dash-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-.stat-card {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  padding: 1.2rem 1.8rem;
-  box-shadow: var(--shadow);
-  border-left: 6px solid var(--accent);
-}
-.stat-card .stat-number {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--primary);
-}
-.stat-card .stat-label {
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.dash-table {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  padding: 1.2rem 1.5rem;
-  box-shadow: var(--shadow);
-  overflow-x: auto;
-}
-.dash-table table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-.dash-table th {
-  background: var(--primary);
-  color: var(--white);
-  padding: 0.8rem 1rem;
-  text-align: left;
-}
-.dash-table td {
-  padding: 0.7rem 1rem;
-  border-bottom: 1px solid #e9edf2;
-}
-.dash-table .badge {
-  background: var(--accent);
-  color: var(--primary);
-  padding: 0.2rem 0.8rem;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 0.8rem;
-}
-.dash-table .badge-secondary {
-  background: #d1d5db;
-  color: #1f2937;
-}
-
-/* ----- RESPONSIVE ----- */
 @media (max-width: 992px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -631,15 +591,17 @@ ul {
   .card-grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
   .contact-wrapper {
     grid-template-columns: 1fr;
   }
-  .dashboard-sidebar {
-    width: 220px;
-    padding: 1.2rem;
+  .info-card-principles ul {
+    grid-template-columns: 1fr;
   }
-  .dashboard-main {
-    padding: 1.5rem;
+  .historia-card p {
+    max-width: 100%;
   }
 }
 
@@ -660,40 +622,13 @@ ul {
   .form-card {
     padding: 1.5rem;
   }
-  .dashboard-body {
-    flex-direction: column;
-  }
-  .dashboard-sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 1rem;
-    gap: 0.5rem;
-  }
-  .dashboard-sidebar .logo {
-    margin-bottom: 0;
-  }
-  .sidebar-menu {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  .sidebar-footer {
-    margin-top: 0;
-    border-top: none;
-    padding-top: 0;
-  }
-  .dash-stats {
-    grid-template-columns: 1fr 1fr;
+  .limites-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
   .card-grid-4 {
-    grid-template-columns: 1fr;
-  }
-  .dash-stats {
     grid-template-columns: 1fr;
   }
   .nav-links li a {
@@ -732,74 +667,127 @@ ul {
   </header>
 
   <main>
-    <section class="hero" style="background: linear-gradient(135deg, #0c1c38 0%, #1a2f4f 100%);">
+    <!-- HERO con fondo dinámico -->
+    <section class="hero">
+      <div class="hero-wave"></div>
       <div class="container hero-grid">
         <div class="hero-text">
           <h1>Registro Civil Municipal de Jiménez</h1>
           <p>Gestiona tus trámites de manera ágil, moderna y transparente. Atención presencial y en línea.</p>
-          <a href="tramites.html" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Ver trámites</a>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="tramites.html" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Ver trámites</a>
+            <a href="citas.html" class="btn btn-success"><i class="fas fa-calendar-plus"></i> Agendar cita</a>
+          </div>
         </div>
         <div class="hero-image">
-          <i class="fas fa-id-card" style="font-size: 6rem; color: #f59e0b; opacity: 0.8;"></i>
+          <i class="fas fa-id-card" style="font-size: 6rem; color: var(--accent); opacity: 0.9;"></i>
         </div>
       </div>
     </section>
 
+    <!-- MISIÓN, VISIÓN Y PRINCIPIOS -->
+    <section class="section bg-gray">
+      <div class="container">
+        <h2 class="section-title-secondary">Nuestra Institución</h2>
+        
+        <div class="info-grid">
+          <div class="info-card">
+            <h3><i class="fas fa-bullseye"></i> Misión</h3>
+            <p>Inscribir, registrar, resguardar y difundir los actos y hechos relativos al estado civil de las personas de manera precisa y exhaustiva.</p>
+          </div>
+          <div class="info-card">
+            <h3><i class="fas fa-eye"></i> Visión</h3>
+            <p>Asegurar la integridad del sistema de registro, la promoción de los derechos de identidad y la garantía del acceso a la información sobre el estado civil de las personas.</p>
+          </div>
+        </div>
+
+        <div class="info-card-principles">
+          <h3><i class="fas fa-shield-alt"></i> Principios Fundamentales</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Publicidad</li>
+            <li><i class="fas fa-check-circle"></i> Eficacia administrativa</li>
+            <li><i class="fas fa-check-circle"></i> Información</li>
+            <li><i class="fas fa-check-circle"></i> Veracidad</li>
+            <li><i class="fas fa-check-circle"></i> Imparcialidad</li>
+            <li><i class="fas fa-check-circle"></i> Unicidad</li>
+            <li><i class="fas fa-check-circle"></i> Gratuidad</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEÑA HISTÓRICA -->
     <section class="section">
+      <div class="container">
+        <div class="historia-card">
+          <h3><i class="fas fa-history"></i> Reseña Histórica</h3>
+          <p>La institución debe su origen al año 1893 bajo el nombre de Jefatura Civil del Municipio Capital. En 1946 pasó a ser Prefectura Civil del Municipio Juan Bautista Rodríguez, y desde 2009 recibe el nombre actual. Es un ente adscrito al Consejo Nacional Electoral (CNE).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="section bg-light">
       <div class="container">
         <h2 class="section-title">Servicios principales</h2>
         <div class="card-grid-4">
           <div class="card service-card">
-            <i class="fas fa-headset"></i>
-            <h3>Atención</h3>
-            <p>Oficinas con personal capacitado para orientarte en cada paso.</p>
+            <i class="fas fa-baby"></i>
+            <h3>Actas de Nacimiento</h3>
+            <p>Expedición de certificados de nacimiento y copias certificadas.</p>
           </div>
           <div class="card service-card">
-            <i class="fas fa-laptop"></i>
-            <h3>Trámites en línea</h3>
-            <p>Consulta y solicita tus actas desde cualquier dispositivo.</p>
+            <i class="fas fa-ring"></i>
+            <h3>Actas de Matrimonio</h3>
+            <p>Registro y expedición de actas de matrimonio civil.</p>
           </div>
           <div class="card service-card">
-            <i class="fas fa-calendar-check"></i>
-            <h3>Citas</h3>
-            <p>Agenda tu cita previa y evita largas esperas.</p>
+            <i class="fas fa-gavel"></i>
+            <h3>Actas de Divorcio</h3>
+            <p>Registro de disoluciones matrimoniales y sus actas.</p>
           </div>
           <div class="card service-card">
-            <i class="fas fa-clipboard-list"></i>
-            <h3>Requisitos</h3>
-            <p>Conoce la documentación necesaria para cada trámite.</p>
+            <i class="fas fa-handshake"></i>
+            <h3>Unión Legal de Hecho</h3>
+            <p>Registro de uniones estables de hecho.</p>
+          </div>
+          <div class="card service-card">
+            <i class="fas fa-edit"></i>
+            <h3>Rectificación de Actas</h3>
+            <p>Corrección de errores en actas registrales.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section bg-light">
-      <div class="container">
-        <h2 class="section-title">Requisitos generales</h2>
-        <div class="pill-group">
-          <span class="pill"><i class="fas fa-id-card"></i> Cédula de identidad</span>
-          <span class="pill"><i class="fas fa-file-alt"></i> Formulario de solicitud</span>
-          <span class="pill"><i class="fas fa-map-pin"></i> Comprobante de domicilio</span>
-          <span class="pill"><i class="fas fa-money-bill-wave"></i> Tasa municipal cancelada</span>
-          <span class="pill"><i class="fas fa-user-check"></i> Testigos (según trámite)</span>
-        </div>
-      </div>
-    </section>
-
+    <!-- UBICACIÓN Y CONTACTO -->
     <section class="section">
       <div class="container">
+        <h2 class="section-title-secondary">Ubicación y Contacto</h2>
         <div class="contact-wrapper">
           <div class="contact-map">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.123456789!2d-69.567890!3d10.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDA3JzI0LjQiTiA2OcKwMzQnMDQuNCJX!5e0!3m2!1ses!2sve!4v1712345678901" 
-              width="100%" height="250" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy">
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d497.49378777807453!2d-69.62207339587555!3d9.92561361517897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses!2sve!4v1787930769347!5m2!1ses!2sve" 
+              width="100%" height="300" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
             </iframe>
           </div>
           <div class="contact-info">
-            <h3><i class="fas fa-map-pin"></i> Avenida Baudilio Lara, Quíbor</h3>
-            <p><i class="fas fa-clock"></i> <strong>Horario:</strong> Lun a Vie 8:00 am – 4:00 pm</p>
+            <h3><i class="fas fa-map-pin"></i> Dirección</h3>
+            <p><strong>Avenida Baudilio Lara, con Avenida Pedro León Torres</strong></p>
+            <p>Edificio Marguli, frente al Colegio Virgen del Valle</p>
+            <p><i class="fas fa-location-dot"></i> Diagonal a la Plaza Bolívar de Quíbor</p>
+            <p><i class="fas fa-map"></i> Parroquia Juan Bautista Rodríguez, Municipio Jiménez, Estado Lara</p>
+            
+            <p style="margin-top: 1rem;"><i class="fas fa-clock"></i> <strong>Horario:</strong> Lun a Vie 8:00 am – 4:00 pm</p>
             <p><i class="fas fa-phone-alt"></i> <strong>Teléfono:</strong> (0251) 123-4567</p>
             <p><i class="fas fa-envelope"></i> <strong>Correo:</strong> registro@jimenez.gob.ve</p>
+
+            <div class="limites-grid">
+              <div class="limite-item"><i class="fas fa-arrow-up"></i> Norte: Colegio Virgen del Valle</div>
+              <div class="limite-item"><i class="fas fa-arrow-down"></i> Sur: Avenida 7</div>
+              <div class="limite-item"><i class="fas fa-arrow-right"></i> Este: Plaza Bolívar de Quíbor</div>
+              <div class="limite-item"><i class="fas fa-arrow-left"></i> Oeste: Ocupaciones de la familia Giménez</div>
+            </div>
           </div>
         </div>
       </div>

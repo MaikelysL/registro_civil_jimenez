@@ -955,11 +955,11 @@ ul {
             </div>
             <!-- Slide 4 -->
             <div class="carousel-slide" onclick="openModal(this)">
-              <img src="WhatsApp Image 2026-08-28 at 9.36.35 AM (1).jpeg">
+              <img src="WhatsApp Image 2026-08-28 at 9.36.35 AM (1).jpeg" alt="Documentos oficiales">
               <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
               <div class="slide-overlay">
                 <h3>Documentos Oficiales</h3>
-                <p>Actas de nacimiento, matrimonio, divorcio y más</p>
+                <p>Actas de nacimiento, matrimonio, defunción y más</p>
               </div>
             </div>
           </div>
@@ -1031,14 +1031,14 @@ ul {
             <p>Registro y expedición de actas de matrimonio civil.</p>
           </div>
           <div class="card service-card">
-            <i class="fas fa-gavel"></i>
-            <h3>Actas de Divorcio</h3>
-            <p>Registro de disoluciones matrimoniales y sus actas.</p>
+            <i class="fas fa-cross"></i>
+            <h3>Actas de Defunción</h3>
+            <p>Registro de defunciones y expedición de certificados de defunción.</p>
           </div>
           <div class="card service-card">
             <i class="fas fa-handshake"></i>
-            <h3>Unión Legal de Hecho</h3>
-            <p>Registro de uniones estables de hecho.</p>
+            <h3>Unión Legal</h3>
+            <p>Registro de uniones legales y declaración de convivencia.</p>
           </div>
           <div class="card service-card">
             <i class="fas fa-edit"></i>
@@ -1222,14 +1222,12 @@ ul {
 
     function closeModal(event) {
       if (event) {
-        // Si es clic en el overlay (fondo) o en el botón cerrar
         if (event.target === event.currentTarget || event.target.closest('.modal-close')) {
           const overlay = document.getElementById('imageModal');
           overlay.classList.remove('active');
           document.body.style.overflow = '';
         }
       } else {
-        // Cerrar por tecla ESC
         const overlay = document.getElementById('imageModal');
         overlay.classList.remove('active');
         document.body.style.overflow = '';

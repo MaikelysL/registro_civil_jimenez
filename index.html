@@ -335,7 +335,6 @@ ul {
   cursor: pointer;
 }
 
-/* Las imágenes se adaptan perfectamente */
 .carousel-slide img {
   width: 100%;
   height: 100%;
@@ -348,7 +347,6 @@ ul {
   transform: scale(1.02);
 }
 
-/* Icono de lupa para indicar que se puede ampliar */
 .carousel-slide .zoom-icon {
   position: absolute;
   top: 20px;
@@ -372,7 +370,6 @@ ul {
   opacity: 1;
 }
 
-/* Overlay con texto en las imágenes */
 .carousel-slide .slide-overlay {
   position: absolute;
   bottom: 0;
@@ -393,7 +390,6 @@ ul {
   font-size: 1rem;
 }
 
-/* Botones del carrusel */
 .carousel-btn {
   position: absolute;
   top: 50%;
@@ -424,7 +420,6 @@ ul {
   right: 16px;
 }
 
-/* Indicadores (puntos) */
 .carousel-indicators {
   display: flex;
   justify-content: center;
@@ -754,6 +749,191 @@ ul {
   color: var(--secondary);
 }
 
+/* ============================================ */
+/* ACORDEÓN DE PARROQUIAS                      */
+/* ============================================ */
+.parroquias-panel {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+.parroquias-panel .panel-header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--white);
+  padding: 1.8rem 2rem;
+}
+
+.parroquias-panel .panel-header h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.parroquias-panel .panel-header h2 i {
+  color: var(--accent);
+}
+
+.parroquias-panel .panel-header p {
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #e9edf2;
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-header {
+  width: 100%;
+  background: var(--white);
+  border: none;
+  padding: 1.2rem 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: left;
+  font-family: inherit;
+}
+
+.accordion-header:hover {
+  background: #f9fafb;
+}
+
+.accordion-header.active {
+  background: #f0f7ff;
+}
+
+.accordion-header .header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.accordion-header .parroquia-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--secondary);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.accordion-header .header-left h3 {
+  color: var(--primary);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.accordion-header .header-left .capital {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-top: 0.1rem;
+}
+
+.accordion-header .header-left .capital i {
+  color: var(--accent);
+  margin-right: 0.2rem;
+}
+
+.accordion-header .accordion-icon {
+  color: var(--secondary);
+  font-size: 1.1rem;
+  transition: transform var(--transition);
+  flex-shrink: 0;
+}
+
+.accordion-header.active .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background: #fafbfc;
+}
+
+.accordion-content-inner {
+  padding: 1.2rem 1.8rem 1.8rem 1.8rem;
+}
+
+.accordion-content h4 {
+  color: var(--primary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.accordion-content h4 i {
+  color: var(--accent);
+}
+
+.parroquias-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.5rem 1.2rem;
+}
+
+.parroquias-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  padding: 0.3rem 0;
+}
+
+.parroquias-list li i {
+  color: var(--success);
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+.parroquias-list li.destacado {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.parroquias-list li.destacado i {
+  color: var(--accent);
+}
+
+.ubicacion-box {
+  background: #eef4fa;
+  border-left: 4px solid var(--secondary);
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.ubicacion-box strong {
+  color: var(--primary);
+}
+
 /* FOOTER */
 .public-footer {
   background: var(--primary);
@@ -854,6 +1034,21 @@ ul {
   }
   .modal-content img {
     max-height: 70vh;
+  }
+  .accordion-header {
+    padding: 1rem 1.2rem;
+  }
+  .accordion-content-inner {
+    padding: 1rem 1.2rem 1.4rem 1.2rem;
+  }
+  .parroquias-list {
+    grid-template-columns: 1fr;
+  }
+  .accordion-header .header-left h3 {
+    font-size: 0.95rem;
+  }
+  .parroquias-panel .panel-header h2 {
+    font-size: 1.3rem;
   }
 }
 
@@ -1078,60 +1273,343 @@ ul {
               <div class="limite-item"><i class="fas fa-arrow-left"></i> Oeste: Ocupaciones de la familia Giménez</div>
             </div>
           </div>
-                  <!-- ============================================ -->
-        <!-- PARROQUIAS CON AUTORIDAD DEL REGISTRO CIVIL -->
+        </div>
+
         <!-- ============================================ -->
-        <div class="parroquias-section" style="margin-top: 2.5rem;">
-          <h2 class="section-title-secondary">Parroquias con autoridad del Registro Civil</h2>
-          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
-            El Registro Civil Municipal de Jiménez tiene autoridad sobre las siguientes parroquias. 
-            Cada una cuenta con su respectiva ubicación.
-          </p>
-          <div class="parroquias-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-            <div class="parroquia-card" style="background: var(--white); border-radius: var(--border-radius); padding: 1.5rem; box-shadow: var(--shadow); border-left: 6px solid var(--secondary);">
-              <h3 style="color: var(--primary); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-                <i class="fas fa-church" style="color: var(--accent);"></i> Parroquia Juan Bautista Rodríguez
-              </h3>
-              <p style="color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Ubicación:</strong></p>
-              <p style="color: var(--text-muted);">Quíbor, Municipio Jiménez, Estado Lara</p>
-            </div>
-            <div class="parroquia-card" style="background: var(--white); border-radius: var(--border-radius); padding: 1.5rem; box-shadow: var(--shadow); border-left: 6px solid var(--secondary);">
-              <h3 style="color: var(--primary); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-                <i class="fas fa-church" style="color: var(--accent);"></i> Parroquia Cuara
-              </h3>
-              <p style="color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Ubicación:</strong></p>
-              <p style="color: var(--text-muted);">Cuara, Municipio Jiménez, Estado Lara</p>
-            </div>
-            <div class="parroquia-card" style="background: var(--white); border-radius: var(--border-radius); padding: 1.5rem; box-shadow: var(--shadow); border-left: 6px solid var(--secondary);">
-              <h3 style="color: var(--primary); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-                <i class="fas fa-church" style="color: var(--accent);"></i> Parroquia Diego de Lozada
-              </h3>
-              <p style="color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Ubicación:</strong></p>
-              <p style="color: var(--text-muted);">Diego de Lozada, Municipio Jiménez, Estado Lara</p>
-            </div>
-            <div class="parroquia-card" style="background: var(--white); border-radius: var(--border-radius); padding: 1.5rem; box-shadow: var(--shadow); border-left: 6px solid var(--secondary);">
-              <h3 style="color: var(--primary); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-                <i class="fas fa-church" style="color: var(--accent);"></i> Parroquia San José
-              </h3>
-              <p style="color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Ubicación:</strong></p>
-              <p style="color: var(--text-muted);">San José, Municipio Jiménez, Estado Lara</p>
-            </div>
-            <div class="parroquia-card" style="background: var(--white); border-radius: var(--border-radius); padding: 1.5rem; box-shadow: var(--shadow); border-left: 6px solid var(--secondary);">
-              <h3 style="color: var(--primary); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-                <i class="fas fa-church" style="color: var(--accent);"></i> Parroquia Tintorero
-              </h3>
-              <p style="color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Ubicación:</strong></p>
-              <p style="color: var(--text-muted);">Tintorero, Municipio Jiménez, Estado Lara</p>
-            </div>
-            <div class="parroquia-card" style="background: var(--white); border-radius: var(--border-radius); padding: 1.5rem; box-shadow: var(--shadow); border-left: 6px solid var(--secondary);">
-              <h3 style="color: var(--primary); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-                <i class="fas fa-church" style="color: var(--accent);"></i> Parroquia Cubiro
-              </h3>
-              <p style="color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Ubicación:</strong></p>
-              <p style="color: var(--text-muted);">Cubiro, Municipio Jiménez, Estado Lara</p>
+        <!-- PARROQUIAS DEL MUNICIPIO JIMÉNEZ             -->
+        <!-- ============================================ -->
+        <div class="parroquias-panel">
+          <div class="panel-header">
+            <h2><i class="fas fa-map-marked-alt"></i> Parroquias del Municipio Jiménez</h2>
+            <p>El Registro Civil Municipal de Jiménez tiene autoridad sobre las siguientes parroquias. Haz clic en cada una para ver sus sectores y ubicación.</p>
+          </div>
+
+          <!-- 1. Juan Bautista Rodríguez -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <div class="header-left">
+                <span class="parroquia-num">1</span>
+                <div>
+                  <h3>Juan Bautista Rodríguez</h3>
+                  <span class="capital"><i class="fas fa-map-pin"></i> Capital: Quíbor (Centro y Núcleo Principal)</span>
+                </div>
+              </div>
+              <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <div class="ubicacion-box">
+                  <strong><i class="fas fa-location-dot"></i> Ubicación:</strong> Quíbor, Municipio Jiménez, Estado Lara
+                </div>
+                <h4><i class="fas fa-list"></i> Sectores y comunidades</h4>
+                <ul class="parroquias-list">
+                  <li class="destacado"><i class="fas fa-star"></i> Quíbor (Centro y Núcleo Principal)</li>
+                  <li><i class="fas fa-circle"></i> Barrio Bolívar</li>
+                  <li><i class="fas fa-circle"></i> La Ermita</li>
+                  <li><i class="fas fa-circle"></i> Pueblo Nuevo</li>
+                  <li><i class="fas fa-circle"></i> Guadalupé</li>
+                  <li><i class="fas fa-circle"></i> Buena Vista</li>
+                  <li><i class="fas fa-circle"></i> Ojo de Agua</li>
+                  <li><i class="fas fa-circle"></i> Palo Negro</li>
+                  <li><i class="fas fa-circle"></i> El Milagro</li>
+                  <li><i class="fas fa-circle"></i> Maraquito</li>
+                  <li><i class="fas fa-circle"></i> Quebrada Grande</li>
+                  <li><i class="fas fa-circle"></i> La Florinda</li>
+                  <li><i class="fas fa-circle"></i> Santa Elena</li>
+                  <li><i class="fas fa-circle"></i> San Jacinto</li>
+                  <li><i class="fas fa-circle"></i> Jacinto Lara</li>
+                  <li><i class="fas fa-circle"></i> La Libertad</li>
+                  <li><i class="fas fa-circle"></i> El Calvario</li>
+                  <li><i class="fas fa-circle"></i> Santa Eduviges</li>
+                  <li><i class="fas fa-circle"></i> Las Malvinas</li>
+                  <li><i class="fas fa-circle"></i> La Negrita</li>
+                  <li><i class="fas fa-circle"></i> Playa Bonita</li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
+
+          <!-- 2. Coronel Mariano Peraza -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <div class="header-left">
+                <span class="parroquia-num">2</span>
+                <div>
+                  <h3>Coronel Mariano Peraza</h3>
+                  <span class="capital"><i class="fas fa-map-pin"></i> Capital: La Ceiba</span>
+                </div>
+              </div>
+              <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <div class="ubicacion-box">
+                  <strong><i class="fas fa-location-dot"></i> Ubicación:</strong> La Ceiba, Municipio Jiménez, Estado Lara
+                </div>
+                <h4><i class="fas fa-list"></i> Sectores y comunidades</h4>
+                <ul class="parroquias-list">
+                  <li class="destacado"><i class="fas fa-star"></i> La Ceiba I</li>
+                  <li class="destacado"><i class="fas fa-star"></i> La Ceiba II</li>
+                  <li><i class="fas fa-circle"></i> Ceiba Sur</li>
+                  <li><i class="fas fa-circle"></i> Arenales</li>
+                  <li><i class="fas fa-circle"></i> Caujiral</li>
+                  <li><i class="fas fa-circle"></i> El Estadio</li>
+                  <li><i class="fas fa-circle"></i> Maracay</li>
+                  <li><i class="fas fa-circle"></i> La Guaroa</li>
+                  <li><i class="fas fa-circle"></i> Reinaldo Martínez</li>
+                  <li><i class="fas fa-circle"></i> Gabo Dorante</li>
+                  <li><i class="fas fa-circle"></i> Las Flores</li>
+                  <li><i class="fas fa-circle"></i> Paraparo</li>
+                  <li><i class="fas fa-circle"></i> Los Jebes</li>
+                  <li><i class="fas fa-circle"></i> Maguare</li>
+                  <li><i class="fas fa-circle"></i> Cotoperiz</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Cuara -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <div class="header-left">
+                <span class="parroquia-num">3</span>
+                <div>
+                  <h3>Cuara</h3>
+                  <span class="capital"><i class="fas fa-map-pin"></i> Capital: Cuara</span>
+                </div>
+              </div>
+              <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <div class="ubicacion-box">
+                  <strong><i class="fas fa-location-dot"></i> Ubicación:</strong> Cuara, Municipio Jiménez, Estado Lara
+                </div>
+                <h4><i class="fas fa-list"></i> Sectores y comunidades</h4>
+                <ul class="parroquias-list">
+                  <li class="destacado"><i class="fas fa-star"></i> Cuara</li>
+                  <li><i class="fas fa-circle"></i> San Antonio</li>
+                  <li><i class="fas fa-circle"></i> El Molino</li>
+                  <li><i class="fas fa-circle"></i> Quebrada Seca</li>
+                  <li><i class="fas fa-circle"></i> Tarnarindo</li>
+                  <li><i class="fas fa-circle"></i> Morindo</li>
+                  <li><i class="fas fa-circle"></i> Las Gallinas</li>
+                  <li><i class="fas fa-circle"></i> Puradlimpio</li>
+                  <li><i class="fas fa-circle"></i> Villa Rosa</li>
+                  <li><i class="fas fa-circle"></i> Los Jebes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Diego de Lozada -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <div class="header-left">
+                <span class="parroquia-num">4</span>
+                <div>
+                  <h3>Diego de Lozada</h3>
+                  <span class="capital"><i class="fas fa-map-pin"></i> Capital: Cubiro</span>
+                </div>
+              </div>
+              <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <div class="ubicacion-box">
+                  <strong><i class="fas fa-location-dot"></i> Ubicación:</strong> Cubiro, Municipio Jiménez, Estado Lara
+                </div>
+                <h4><i class="fas fa-list"></i> Sectores y comunidades</h4>
+                <ul class="parroquias-list">
+                  <li class="destacado"><i class="fas fa-star"></i> Cubiro</li>
+                  <li><i class="fas fa-circle"></i> Paso Real</li>
+                  <li><i class="fas fa-circle"></i> La Reluciente</li>
+                  <li><i class="fas fa-circle"></i> La Florida</li>
+                  <li><i class="fas fa-circle"></i> El Payal</li>
+                  <li><i class="fas fa-circle"></i> El Páramo</li>
+                  <li><i class="fas fa-circle"></i> Las Cuibas</li>
+                  <li><i class="fas fa-circle"></i> Piedra de Ojo</li>
+                  <li><i class="fas fa-circle"></i> Peña de los Toros</li>
+                  <li><i class="fas fa-circle"></i> El Salvaje</li>
+                  <li><i class="fas fa-circle"></i> El Samuco</li>
+                  <li><i class="fas fa-circle"></i> La Tigrera</li>
+                  <li><i class="fas fa-circle"></i> Tronco Negro</li>
+                  <li><i class="fas fa-circle"></i> El Monte</li>
+                  <li><i class="fas fa-circle"></i> Quebrada Abajo</li>
+                  <li><i class="fas fa-circle"></i> Cuatro Esquinas</li>
+                  <li><i class="fas fa-circle"></i> Mirmiche</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. José Bernardo Dorante -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <div class="header-left">
+                <span class="parroquia-num">5</span>
+                <div>
+                  <h3>José Bernardo Dorante</h3>
+                  <span class="capital"><i class="fas fa-map-pin"></i> Capital: El Hato</span>
+                </div>
+              </div>
+              <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <div class="ubicacion-box">
+                  <strong><i class="fas fa-location-dot"></i> Ubicación:</strong> El Hato, Municipio Jiménez, Estado Lara
+                </div>
+                <h4><i class="fas fa-list"></i> Sectores y comunidades</h4>
+                <ul class="parroquias-list">
+                  <li class="destacado"><i class="fas fa-star"></i> El Hato</li>
+                  <li><i class="fas fa-circle"></i> San José</li>
+                  <li><i class="fas fa-circle"></i> Hato Abajo</li>
+                  <li><i class="fas fa-circle"></i> Cabrera</li>
+                  <li><i class="fas fa-circle"></i> El Vegón</li>
+                  <li><i class="fas fa-circle"></i> La Vigía</li>
+                  <li><i class="fas fa-circle"></i> Cerro Pelón</li>
+                  <li><i class="fas fa-circle"></i> El Jagüey</li>
+                  <li><i class="fas fa-circle"></i> Chaimare</li>
+                  <li><i class="fas fa-circle"></i> Morón</li>
+                  <li><i class="fas fa-circle"></i> Cerro Morón</li>
+                  <li><i class="fas fa-circle"></i> El Caujerito</li>
+                  <li><i class="fas fa-circle"></i> El Pueblito</li>
+                  <li><i class="fas fa-circle"></i> Santa Elena</li>
+                  <li><i class="fas fa-circle"></i> El Roble</li>
+                  <li><i class="fas fa-circle"></i> Playa Bonita</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Paraíso de San José -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <div class="header-left">
+                <span class="parroquia-num">6</span>
+                <div>
+                  <h3>Paraíso de San José</h3>
+                  <span class="capital"><i class="fas fa-map-pin"></i> Capital: Agua Negra</span>
+                </div>
+              </div>
+              <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <div class="ubicacion-box">
+                  <strong><i class="fas fa-location-dot"></i> Ubicación:</strong> Agua Negra, Municipio Jiménez, Estado Lara
+                </div>
+                <h4><i class="fas fa-list"></i> Sectores y comunidades</h4>
+                <ul class="parroquias-list">
+                  <li class="destacado"><i class="fas fa-star"></i> Agua Negra</li>
+                  <li><i class="fas fa-circle"></i> El Manzanal</li>
+                  <li><i class="fas fa-circle"></i> El Barzal</li>
+                  <li><i class="fas fa-circle"></i> Los Palmares</li>
+                  <li><i class="fas fa-circle"></i> La Vigía</li>
+                  <li><i class="fas fa-circle"></i> Las Filas</li>
+                  <li><i class="fas fa-circle"></i> La Sabatina</li>
+                  <li><i class="fas fa-circle"></i> El Degredo</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. San Miguel -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <div class="header-left">
+                <span class="parroquia-num">7</span>
+                <div>
+                  <h3>San Miguel</h3>
+                  <span class="capital"><i class="fas fa-map-pin"></i> Capital: San Miguel</span>
+                </div>
+              </div>
+              <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <div class="ubicacion-box">
+                  <strong><i class="fas fa-location-dot"></i> Ubicación:</strong> San Miguel, Municipio Jiménez, Estado Lara
+                </div>
+                <h4><i class="fas fa-list"></i> Sectores y comunidades</h4>
+                <ul class="parroquias-list">
+                  <li class="destacado"><i class="fas fa-star"></i> San Miguel</li>
+                  <li><i class="fas fa-circle"></i> La Libertad</li>
+                  <li><i class="fas fa-circle"></i> Volcancito</li>
+                  <li><i class="fas fa-circle"></i> Las Tablas</li>
+                  <li><i class="fas fa-circle"></i> Pozo del Río</li>
+                  <li><i class="fas fa-circle"></i> San Jerónimo</li>
+                  <li><i class="fas fa-circle"></i> Las Ánimas</li>
+                  <li><i class="fas fa-circle"></i> Cantarrana</li>
+                  <li><i class="fas fa-circle"></i> Piedra de Ojo</li>
+                  <li><i class="fas fa-circle"></i> La Quebrada</li>
+                  <li><i class="fas fa-circle"></i> El Totumo</li>
+                  <li><i class="fas fa-circle"></i> El Roble</li>
+                  <li><i class="fas fa-circle"></i> Tierra Sosa</li>
+                  <li><i class="fas fa-circle"></i> Palo Alguerado</li>
+                  <li><i class="fas fa-circle"></i> La Fila</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. Tintorero -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <div class="header-left">
+                <span class="parroquia-num">8</span>
+                <div>
+                  <h3>Tintorero</h3>
+                  <span class="capital"><i class="fas fa-map-pin"></i> Capital: Tintorero</span>
+                </div>
+              </div>
+              <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <div class="ubicacion-box">
+                  <strong><i class="fas fa-location-dot"></i> Ubicación:</strong> Tintorero, Municipio Jiménez, Estado Lara
+                </div>
+                <h4><i class="fas fa-list"></i> Sectores y comunidades</h4>
+                <ul class="parroquias-list">
+                  <li class="destacado"><i class="fas fa-star"></i> Tintorero</li>
+                  <li><i class="fas fa-circle"></i> Hisopal</li>
+                  <li><i class="fas fa-circle"></i> Guayamal</li>
+                  <li><i class="fas fa-circle"></i> Las Peñas</li>
+                  <li><i class="fas fa-circle"></i> El Roble</li>
+                  <li><i class="fas fa-circle"></i> Barro Negro</li>
+                  <li><i class="fas fa-circle"></i> El Tanquecito</li>
+                  <li><i class="fas fa-circle"></i> La Culata</li>
+                  <li><i class="fas fa-circle"></i> Las Ventas</li>
+                  <li><i class="fas fa-circle"></i> Negrete I</li>
+                  <li><i class="fas fa-circle"></i> El Pozón</li>
+                  <li><i class="fas fa-circle"></i> La Costa</li>
+                  <li><i class="fas fa-circle"></i> Los Cerritos</li>
+                  <li><i class="fas fa-circle"></i> El Vigiadero</li>
+                  <li><i class="fas fa-circle"></i> Los Torrecitas</li>
+                  <li><i class="fas fa-circle"></i> Rincón de Guardia</li>
+                  <li><i class="fas fa-circle"></i> El Bejuco</li>
+                  <li><i class="fas fa-circle"></i> Los Yabos</li>
+                  <li><i class="fas fa-circle"></i> Banagüita</li>
+                  <li><i class="fas fa-circle"></i> Campo Alegre</li>
+                  <li><i class="fas fa-circle"></i> Negrete II</li>
+                  <li><i class="fas fa-circle"></i> Saduy</li>
+                  <li><i class="fas fa-circle"></i> Cerro El Medio</li>
+                  <li><i class="fas fa-circle"></i> Las Faldas</li>
+                  <li><i class="fas fa-circle"></i> Patriota</li>
+                  <li><i class="fas fa-circle"></i> Poa Poa</li>
+                  <li><i class="fas fa-circle"></i> Canape</li>
+                  <li><i class="fas fa-circle"></i> Las Campanas</li>
+                  <li><i class="fas fa-circle"></i> La Calle</li>
+                  <li><i class="fas fa-circle"></i> Las Cocinas</li>
+                  <li><i class="fas fa-circle"></i> Campo Lindo</li>
+                  <li><i class="fas fa-circle"></i> Negrete Sur</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -1305,6 +1783,30 @@ ul {
     // También cerrar con el botón X
     document.querySelector('.modal-close').addEventListener('click', function(e) {
       closeModal(e);
+    });
+
+    // === ACORDEÓN DE PARROQUIAS ===
+    function toggleAccordion(button) {
+      const content = button.nextElementSibling;
+      const isActive = button.classList.contains('active');
+
+      if (isActive) {
+        button.classList.remove('active');
+        content.style.maxHeight = null;
+      } else {
+        button.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }
+
+    // Abrir el primer acordeón por defecto
+    document.addEventListener('DOMContentLoaded', function() {
+      const firstAccordion = document.querySelector('.accordion-header');
+      if (firstAccordion) {
+        firstAccordion.classList.add('active');
+        const firstContent = firstAccordion.nextElementSibling;
+        firstContent.style.maxHeight = firstContent.scrollHeight + 'px';
+      }
     });
   </script>
 </body>
